@@ -3,7 +3,8 @@
 # Python Assignments — Infinite Learning Batch 10
 
 ![Status](https://img.shields.io/badge/status-active-success)
-![Python](https://img.shields.io/badge/python-3.x-blue)
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![Conda](https://img.shields.io/badge/conda-environment-green)
 ![Course](https://img.shields.io/badge/course-AI%20Development-orange)
 ![Progress](https://img.shields.io/badge/tasks-4%2F31-informational)
 
@@ -65,55 +66,7 @@ More tasks will be added as the program continues.
 * [ ] **Task 6 — Python Modules, File I/O, & Simple OOP**
   Covers NumPy statistics, pandas DataFrame usage, text file output, and an OOP-based `GradeBook` class.
 
-* [ ] **Task 7 — Upcoming**
-
-* [ ] **Task 8 — Upcoming**
-
-* [ ] **Task 9 — Upcoming**
-
-* [ ] **Task 10 — Upcoming**
-
-* [ ] **Task 11 — Upcoming**
-
-* [ ] **Task 12 — Upcoming**
-
-* [ ] **Task 13 — Upcoming**
-
-* [ ] **Task 14 — Upcoming**
-
-* [ ] **Task 15 — Upcoming**
-
-* [ ] **Task 16 — Upcoming**
-
-* [ ] **Task 17 — Upcoming**
-
-* [ ] **Task 18 — Upcoming**
-
-* [ ] **Task 19 — Upcoming**
-
-* [ ] **Task 20 — Upcoming**
-
-* [ ] **Task 21 — Upcoming**
-
-* [ ] **Task 22 — Upcoming**
-
-* [ ] **Task 23 — Upcoming**
-
-* [ ] **Task 24 — Upcoming**
-
-* [ ] **Task 25 — Upcoming**
-
-* [ ] **Task 26 — Upcoming**
-
-* [ ] **Task 27 — Upcoming**
-
-* [ ] **Task 28 — Upcoming**
-
-* [ ] **Task 29 — Upcoming**
-
-* [ ] **Task 30 — Upcoming**
-
-* [ ] **Task 31 — Upcoming**
+* [ ] **Task 7 - 31 — Upcoming**
 
 ---
 
@@ -132,14 +85,15 @@ More tasks will be added as the program continues.
 
 ### Supporting Files
 
-* `requirements.txt`
+* `environment.yml`
 * `.gitignore`
 
 ---
 
 ## Tech Stack
 
-* **Python**
+* **Python 3.12**
+* **Conda** (Environment Management)
 * **NumPy**
 * **pandas**
 
@@ -147,21 +101,26 @@ More tasks will be added as the program continues.
 
 ## How to Run
 
-Clone the repository:
+This project uses Conda for environment management to ensure consistency across different machines.
 
+**1. Clone the repository:**
 ```bash
-git clone https://github.com/Zendin110206/tugas_python_ai_b10.git
+git clone [https://github.com/Zendin110206/tugas_python_ai_b10.git](https://github.com/Zendin110206/tugas_python_ai_b10.git)
 cd tugas_python_ai_b10
 ```
 
-Install dependencies:
-
+**2. Setup the Conda Environment:**
+Create the environment and install all dependencies automatically using the provided configuration file:
 ```bash
-pip install -r requirements.txt
+conda env create -f environment.yml
 ```
 
-Run each task:
+**3. Activate the environment:**
+```bash
+conda activate env_daily_use
+```
 
+**4. Run each task:**
 ```bash
 python tugas3.py
 python tugas4.py
@@ -191,15 +150,7 @@ Rather than treating these files as isolated homework submissions, I organize th
 
 ## Author
 
-**Muhammad Zaenal Abidin Abdurrahman**
-Telecommunication Engineering Undergraduate — Telkom University
+**Muhammad Zaenal Abidin Abdurrahman** Telecommunication Engineering Undergraduate — Telkom University
 
 * GitHub: [Zendin110206](https://github.com/Zendin110206)
 * LinkedIn: [zendin1102](https://www.linkedin.com/in/zendin1102/)
-
----
-
-## Conclusion
-
-These assignments represent my foundation-building phase in Python.
-As the program progresses, this repository will continue to grow as a documented record of learning, problem-solving, and technical development in the field of AI and software engineering.
