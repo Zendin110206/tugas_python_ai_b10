@@ -54,10 +54,10 @@ More tasks will be added as the program continues.
 
 ## Completed Tasks
 
-* [ ] **Task 3 — Python Basics**
+* [x] **Task 3 — Python Basics**
   Covers variables, data types, string manipulation, mathematical operations, list operations, and user input.
 
-* [ ] **Task 4 — Python Data Structures**
+* [x] **Task 4 — Python Data Structures**
   Covers list, tuple, set, dictionary, nested structures, comprehensions, and membership checking.
 
 * [ ] **Task 5 — Python Function and Class**
