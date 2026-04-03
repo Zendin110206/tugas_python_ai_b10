@@ -60,10 +60,10 @@ More tasks will be added as the program continues.
 * [x] **Task 4 — Python Data Structures**
   Covers list, tuple, set, dictionary, nested structures, comprehensions, and membership checking.
 
-* [ ] **Task 5 — Python Function and Class**
+* [x] **Task 5 — Python Function and Class**
   Covers function definitions, default arguments, return values, class design, methods, and `__str__`.
 
-* [ ] **Task 6 — Python Modules, File I/O, & Simple OOP**
+* [x] **Task 6 — Python Modules, File I/O, & Simple OOP**
   Covers NumPy statistics, pandas DataFrame usage, text file output, and an OOP-based `GradeBook` class.
 
 * [ ] **Task 7 - 31 — Upcoming**
