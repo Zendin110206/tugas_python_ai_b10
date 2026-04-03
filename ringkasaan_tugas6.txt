@@ -1,0 +1,15 @@
+=== Ringkasan GradeBook ===
+
+Jumlah mahasiswa: 5
+Rata-rata nilai: 75.80
+Persentase lulus (threshold 70): 60.00%
+Jumlah mahasiswa yang lulus: 3
+Jumlah mahasiswa yang tidak lulus: 2
+
+Data Mahasiswa:
+   nama    nim  nilai      status
+  Alice IL1001     88       LULUS
+    Bob IL1002     78       LULUS
+Charlie IL1003     64 TIDAK LULUS
+  David IL1004     92       LULUS
+    Eve IL1005     57 TIDAK LULUS
