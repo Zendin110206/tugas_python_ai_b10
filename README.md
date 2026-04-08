@@ -54,19 +54,19 @@ More tasks will be added as the program continues.
 
 ## Completed Tasks
 
-* [x] **Task 3 — Python Basics**
+- [x] **Task 3 — Python Basics**
   Covers variables, data types, string manipulation, mathematical operations, list operations, and user input.
 
-* [x] **Task 4 — Python Data Structures**
+- [x] **Task 4 — Python Data Structures**
   Covers list, tuple, set, dictionary, nested structures, comprehensions, and membership checking.
 
-* [x] **Task 5 — Python Function and Class**
+- [x] **Task 5 — Python Function and Class**
   Covers function definitions, default arguments, return values, class design, methods, and `__str__`.
 
-* [x] **Task 6 — Python Modules, File I/O, & Simple OOP**
+- [x] **Task 6 — Python Modules, File I/O, & Simple OOP**
   Covers NumPy statistics, pandas DataFrame usage, text file output, and an OOP-based `GradeBook` class.
 
-* [ ] **Task 7 - 31 — Upcoming**
+- [ ] **Task 7 - 31 — Upcoming**
 
 ---
 
@@ -74,28 +74,28 @@ More tasks will be added as the program continues.
 
 ### Core Assignment Files
 
-* `tugas3.py`
-* `tugas4.py`
-* `tugas5.py`
-* `tugas6.py`
+- `tugas3.py`
+- `tugas4.py`
+- `tugas5.py`
+- `tugas6.py`
 
 ### Output File
 
-* `ringkasan_tugas6.txt`
+- `ringkasan_tugas6.txt`
 
 ### Supporting Files
 
-* `environment.yml`
-* `.gitignore`
+- `environment.yml`
+- `.gitignore`
 
 ---
 
 ## Tech Stack
 
-* **Python 3.12**
-* **Conda** (Environment Management)
-* **NumPy**
-* **pandas**
+- **Python 3.12**
+- **Conda** (Environment Management)
+- **NumPy**
+- **pandas**
 
 ---
 
@@ -104,6 +104,7 @@ More tasks will be added as the program continues.
 This project uses Conda for environment management to ensure consistency across different machines.
 
 **1. Clone the repository:**
+
 ```bash
 git clone [https://github.com/Zendin110206/tugas_python_ai_b10.git](https://github.com/Zendin110206/tugas_python_ai_b10.git)
 cd tugas_python_ai_b10
@@ -111,16 +112,19 @@ cd tugas_python_ai_b10
 
 **2. Setup the Conda Environment:**
 Create the environment and install all dependencies automatically using the provided configuration file:
+
 ```bash
 conda env create -f environment.yml
 ```
 
 **3. Activate the environment:**
+
 ```bash
 conda activate env_daily_use
 ```
 
 **4. Run each task:**
+
 ```bash
 python tugas3.py
 python tugas4.py
@@ -134,10 +138,10 @@ python tugas6.py
 
 Through this repository, I aim to:
 
-* strengthen my Python fundamentals
-* practice writing clearer and more structured code
-* build consistency in documenting technical work
-* prepare a solid foundation for future AI and data-related projects
+- strengthen my Python fundamentals
+- practice writing clearer and more structured code
+- build consistency in documenting technical work
+- prepare a solid foundation for future AI and data-related projects
 
 ---
 
@@ -152,5 +156,5 @@ Rather than treating these files as isolated homework submissions, I organize th
 
 **Muhammad Zaenal Abidin Abdurrahman** Telecommunication Engineering Undergraduate — Telkom University
 
-* GitHub: [Zendin110206](https://github.com/Zendin110206)
-* LinkedIn: [zendin1102](https://www.linkedin.com/in/zendin1102/)
+- GitHub: [Zendin110206](https://github.com/Zendin110206)
+- LinkedIn: [zendin1102](https://www.linkedin.com/in/zendin1102/)
