@@ -6,10 +6,10 @@
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Conda](https://img.shields.io/badge/conda-environment-green)
 ![Course](https://img.shields.io/badge/course-AI%20Development-orange)
-![Progress](https://img.shields.io/badge/tasks-5%2F31-informational)
+![Progress](https://img.shields.io/badge/tasks-6%2F31-informational)
 
 Structured Python assignment repository for Infinite Learning Batch 10.  
-This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, and notebook-based data science workflows.
+This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, feature engineering, and notebook-based data science workflows.
 
 </div>
 
@@ -61,6 +61,7 @@ This combination makes the repository more representative of my actual learning 
 ├── tugas5.py
 ├── tugas6.py
 ├── tugas7_eda.ipynb
+├── tugas8_data_science.ipynb
 ├── ringkasaan_tugas6.txt
 ├── assets/
 │   └── screenshots/
@@ -98,7 +99,10 @@ This combination makes the repository more representative of my actual learning 
 - [x] **Task 7 — Mini Project: Exploratory Data Analysis (EDA)**
   Covers notebook-based exploratory analysis of a 209-country Worldometer COVID-19 dataset snapshot, including data structure inspection, missing-value auditing, distribution analysis, continent-level aggregation, positivity-rate cleaning, death and recovery outcome metrics, serious/critical case analysis, country-level benchmarking, and correlation heatmaps. Each major step is accompanied by written analytical insight, with particular emphasis on data integrity issues, testing-capacity disparities, and observation bias in reported global case counts.
 
-- [ ] **Task 8 - 31 — Upcoming**
+- [x] **Task 8 — Mini Project: Data Science Practice**
+  Covers notebook-based analysis of the Housing Prices Dataset, including structural inspection, missing-value and duplicate validation, reusable cleaning logic, categorical encoding, univariate and bivariate EDA, premium-feature price comparisons, multivariate interaction analysis, correlation mapping, and feature engineering through variables such as `amenities_score`, `total_rooms`, `area_per_bedroom`, and `size_category`. The notebook concludes with modeling-oriented recommendations by identifying which housing attributes carry the strongest predictive signal for price estimation.
+
+- [ ] **Task 9 - 31 — Upcoming**
 
 ---
 
@@ -136,6 +140,9 @@ This combination makes the repository more representative of my actual learning 
 
 - `tugas7_eda.ipynb`
   Notebook-based Infinite Learning assignment for Task 7 EDA, containing step-by-step analysis, visualizations, and written insights.
+
+- `tugas8_data_science.ipynb`
+  Notebook-based Infinite Learning assignment for Task 8 Data Science Practice, containing structured EDA, feature transformation, price-driver analysis, and feature engineering insights on the housing dataset.
 
 - `ringkasaan_tugas6.txt`
   Output or supporting text file related to Task 6.
@@ -212,10 +219,12 @@ python "HackerRank/introduction/python_if_else.py"
 **5. Access notebook-based assignments:**
 
 - **Task 7 EDA notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1wtv8ZXdOkMeRhzEmK7W9CZ2DpTFmRc-o?usp=sharing)
-- The repository keeps the Task 7 notebook file as `tugas7_eda.ipynb` for documentation and versioning purposes.
+- **Task 8 Data Science notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1Fr2T_d19bS6ozuaN1vgcLmvZFYOXf6lO?usp=sharing)
+- The repository keeps the Task 7 notebook file as `tugas7_eda.ipynb` and the Task 8 notebook file as `tugas8_data_science.ipynb` for documentation and versioning purposes.
 - The current Task 7 notebook is best reviewed through Google Colab because it depends on an external dataset file, `worldometer_data.csv`, which is intentionally not stored in this repository to keep the repository lighter.
-- A fresh local clone of this repository does **not** include that dataset by default, so running the notebook locally requires downloading the Worldometer dataset separately and adjusting the notebook file path as needed.
-- Upcoming notebook-heavy coursework, especially Tasks 8 through 12, may also continue to use a Colab-first workflow when the course provides external templates, datasets, or hosted notebook references.
+- Task 8 follows a similar notebook-first workflow and depends on an external dataset file, `Housing.csv`, originally referenced from the [Housing Prices Dataset on Kaggle](https://www.kaggle.com/datasets/yasserh/housing-prices-dataset). The notebook is currently structured for a Colab-style file path (`/content/Housing.csv`).
+- A fresh local clone of this repository does **not** include those external datasets by default, so running the notebooks locally requires downloading the required dataset separately and adjusting the notebook file path as needed.
+- Upcoming notebook-heavy coursework, especially Tasks 9 through 12, may also continue to use a Colab-first workflow when the course provides external templates, datasets, or hosted notebook references.
 
 ---
 
@@ -242,6 +251,15 @@ These additional folders show that I do not rely only on mandatory coursework. I
 Some notebook-based assignments also depend on external datasets and are therefore referenced through Google Colab links when that provides a cleaner and lighter repository structure.
 
 I organize everything in one repository to reflect discipline, continuity, and a professional record of how I learn and improve over time.
+
+---
+
+## Acknowledgment
+
+This repository's emphasis on structured documentation and continuous learning is also influenced by **Arifian Saputra**, who serves as a Technical Mentor in the AI Development program at Infinite Learning. His public technical profile and professional documentation style have been a useful reference for presenting learning progress in a clearer and more credible way.
+
+- GitHub: [arifian853](https://github.com/arifian853)
+- Website: [arifian.dev](https://arifian.dev)
 
 ---
 
