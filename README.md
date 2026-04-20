@@ -6,10 +6,10 @@
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Conda](https://img.shields.io/badge/conda-environment-green)
 ![Course](https://img.shields.io/badge/course-AI%20Development-orange)
-![Progress](https://img.shields.io/badge/tasks-4%2F31-informational)
+![Progress](https://img.shields.io/badge/tasks-5%2F31-informational)
 
 Structured Python assignment repository for Infinite Learning Batch 10.  
-This repository documents my progress from Python fundamentals toward more applied topics such as data structures, functions, object-oriented programming, NumPy, and pandas.
+This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, and notebook-based data science workflows.
 
 </div>
 
@@ -39,6 +39,7 @@ The progress indicator at the top of this README refers to the official Infinite
 
 The central part of this repository is the assignment work completed as part of the **AI Development program at Infinite Learning Batch 10**.  
 These files represent formal coursework and remain the main context of the repository.
+The track now includes both script-based Python assignments and notebook-based data analysis work.
 
 ### Supplementary Track: FreeCodeCamp and HackerRank
 
@@ -59,6 +60,7 @@ This combination makes the repository more representative of my actual learning 
 ├── tugas4.py
 ├── tugas5.py
 ├── tugas6.py
+├── tugas7_eda.ipynb
 ├── ringkasaan_tugas6.txt
 ├── assets/
 │   └── screenshots/
@@ -93,7 +95,10 @@ This combination makes the repository more representative of my actual learning 
 - [x] **Task 6 — Python Modules, File I/O, & Simple OOP**
   Covers NumPy statistics, pandas DataFrame usage, text file output, and an OOP-based `GradeBook` class.
 
-- [ ] **Task 7 - 31 — Upcoming**
+- [x] **Task 7 — Mini Project: Exploratory Data Analysis (EDA)**
+  Covers notebook-based exploratory analysis of a 209-country Worldometer COVID-19 dataset snapshot, including data structure inspection, missing-value auditing, distribution analysis, continent-level aggregation, positivity-rate cleaning, death and recovery outcome metrics, serious/critical case analysis, country-level benchmarking, and correlation heatmaps. Each major step is accompanied by written analytical insight, with particular emphasis on data integrity issues, testing-capacity disparities, and observation bias in reported global case counts.
+
+- [ ] **Task 8 - 31 — Upcoming**
 
 ---
 
@@ -129,6 +134,9 @@ This combination makes the repository more representative of my actual learning 
 - `tugas3.py` to `tugas6.py`
   Core Infinite Learning assignment files.
 
+- `tugas7_eda.ipynb`
+  Notebook-based Infinite Learning assignment for Task 7 EDA, containing step-by-step analysis, visualizations, and written insights.
+
 - `ringkasaan_tugas6.txt`
   Output or supporting text file related to Task 6.
 
@@ -145,7 +153,7 @@ This combination makes the repository more representative of my actual learning 
   Reserved for additional project documentation.
 
 - `environment.yml`
-  Conda environment definition for reproducible local setup.
+  Conda environment definition for reproducible local setup across script, notebook, data science, machine learning, and TensorFlow/Keras-based assignments.
 
 - `.gitignore`
   Repository ignore rules for local files and generated artifacts.
@@ -156,8 +164,13 @@ This combination makes the repository more representative of my actual learning 
 
 - **Python 3.12**
 - **Conda** (Environment Management)
+- **Jupyter Notebook / Google Colab**
 - **NumPy**
 - **pandas**
+- **Matplotlib**
+- **Seaborn**
+- **scikit-learn**
+- **TensorFlow / Keras**
 
 ---
 
@@ -185,7 +198,7 @@ conda env create -f environment.yml
 conda activate env_daily_use
 ```
 
-**4. Run the files you want to review:**
+**4. Run the script-based files you want to review:**
 
 ```bash
 python tugas3.py
@@ -195,6 +208,14 @@ python tugas6.py
 python "FreeCodeCamp Certifications Python/Classes and Objects/Build_an_Email_Simulator.py"
 python "HackerRank/introduction/python_if_else.py"
 ```
+
+**5. Access notebook-based assignments:**
+
+- **Task 7 EDA notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1wtv8ZXdOkMeRhzEmK7W9CZ2DpTFmRc-o?usp=sharing)
+- The repository keeps the Task 7 notebook file as `tugas7_eda.ipynb` for documentation and versioning purposes.
+- The current Task 7 notebook is best reviewed through Google Colab because it depends on an external dataset file, `worldometer_data.csv`, which is intentionally not stored in this repository to keep the repository lighter.
+- A fresh local clone of this repository does **not** include that dataset by default, so running the notebook locally requires downloading the Worldometer dataset separately and adjusting the notebook file path as needed.
+- Upcoming notebook-heavy coursework, especially Tasks 8 through 12, may also continue to use a Colab-first workflow when the course provides external templates, datasets, or hosted notebook references.
 
 ---
 
@@ -217,6 +238,8 @@ This repository is part of my ongoing learning journey in programming and AI dev
 While the primary focus is still the official **Infinite Learning Batch 10** assignment path, the inclusion of **FreeCodeCamp** and **HackerRank** work is deliberate.
 
 These additional folders show that I do not rely only on mandatory coursework. I also spend time reinforcing concepts independently through guided practice, review material, debugging exercises, and small coding projects.
+
+Some notebook-based assignments also depend on external datasets and are therefore referenced through Google Colab links when that provides a cleaner and lighter repository structure.
 
 I organize everything in one repository to reflect discipline, continuity, and a professional record of how I learn and improve over time.
 
