@@ -72,6 +72,7 @@ This combination makes the repository more representative of my actual learning 
 │   ├── Dictionary and Sets/
 │   ├── Error Handling/
 │   ├── Classes and Objects/
+│   ├── Object Oriented Program (OOP)/
 │   └── Certification Projects/
 └── HackerRank/
     ├── introduction/
@@ -122,6 +123,9 @@ This combination makes the repository more representative of my actual learning 
 
 - **Classes and Objects**
   Covers class design, object behavior, and small object-oriented Python projects.
+
+- **Object Oriented Program (OOP)**
+  Covers deeper object-oriented programming concepts such as encapsulation, properties, inheritance, polymorphism, name mangling, abstraction, and OOP-focused Python practice exercises.
 
 - **Certification Projects**
   Stores project-style exercises related to FreeCodeCamp Python certification preparation.
@@ -213,6 +217,7 @@ python tugas4.py
 python tugas5.py
 python tugas6.py
 python "FreeCodeCamp Certifications Python/Classes and Objects/Build_an_Email_Simulator.py"
+python "FreeCodeCamp Certifications Python/Object Oriented Program (OOP)/Build_a_Player_Interface.py"
 python "HackerRank/introduction/python_if_else.py"
 ```
 
