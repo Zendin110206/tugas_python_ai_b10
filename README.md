@@ -69,6 +69,7 @@ This combination makes the repository more representative of my actual learning 
 ├── FreeCodeCamp Certifications Python/
 │   ├── Python Basics/
 │   ├── Loops and Sequences/
+│   ├── Linear_Data_Structures/
 │   ├── Dictionary and Sets/
 │   ├── Error Handling/
 │   ├── Classes and Objects/
@@ -114,6 +115,9 @@ This combination makes the repository more representative of my actual learning 
 
 - **Loops and Sequences**
   Covers repetition, iteration patterns, and sequence-based exercises.
+
+- **Linear Data Structures**
+  Covers algorithmic thinking, Big O notation, arrays, stacks, queues, linked lists, and hash-based data structures through review notes and implementation-focused exercises.
 
 - **Dictionary and Sets**
   Covers dictionary operations, set usage, validation logic, and additional topic notes.
@@ -217,6 +221,7 @@ python tugas4.py
 python tugas5.py
 python tugas6.py
 python "FreeCodeCamp Certifications Python/Classes and Objects/Build_an_Email_Simulator.py"
+python "FreeCodeCamp Certifications Python/Linear_Data_Structures/Build_a_Linked_List.py"
 python "FreeCodeCamp Certifications Python/Object Oriented Program (OOP)/Build_a_Player_Interface.py"
 python "HackerRank/introduction/python_if_else.py"
 ```
