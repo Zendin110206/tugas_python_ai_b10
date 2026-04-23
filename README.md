@@ -70,6 +70,7 @@ This combination makes the repository more representative of my actual learning 
 │   ├── Python Basics/
 │   ├── Loops and Sequences/
 │   ├── Linear_Data_Structures/
+│   ├── Algorithms/
 │   ├── Dictionary and Sets/
 │   ├── Error Handling/
 │   ├── Classes and Objects/
@@ -118,6 +119,9 @@ This combination makes the repository more representative of my actual learning 
 
 - **Linear Data Structures**
   Covers algorithmic thinking, Big O notation, arrays, stacks, queues, linked lists, and hash-based data structures through review notes and implementation-focused exercises.
+
+- **Algorithms**
+  Covers searching and sorting fundamentals through structured review notes, with emphasis on linear search, binary search, the bisection method, selection sort, merge sort, quick sort, and related algorithmic problem-solving patterns.
 
 - **Dictionary and Sets**
   Covers dictionary operations, set usage, validation logic, and additional topic notes.
