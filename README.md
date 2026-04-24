@@ -67,6 +67,7 @@ This combination makes the repository more representative of my actual learning 
 │   └── screenshots/
 ├── docs/
 ├── FreeCodeCamp Certifications Python/
+│   ├── Python_Review.md
 │   ├── Python Basics/
 │   ├── Loops and Sequences/
 │   ├── Linear_Data_Structures/
@@ -111,6 +112,9 @@ This combination makes the repository more representative of my actual learning 
 
 ### FreeCodeCamp Practice
 
+- **Python Review**
+  Provides a consolidated review note for Python fundamentals, data structures, algorithms, OOP, and related programming concepts.
+
 - **Python Basics**
   Covers review notes and small Python projects focused on core syntax, conditions, strings, and introductory logic.
 
@@ -121,7 +125,7 @@ This combination makes the repository more representative of my actual learning 
   Covers algorithmic thinking, Big O notation, arrays, stacks, queues, linked lists, and hash-based data structures through review notes and implementation-focused exercises.
 
 - **Algorithms**
-  Covers searching and sorting fundamentals through structured review notes, with emphasis on linear search, binary search, the bisection method, selection sort, merge sort, quick sort, and related algorithmic problem-solving patterns.
+  Covers searching, validation, numerical approximation, and sorting fundamentals through structured review notes and implementation-focused exercises. Current practice includes binary search, the bisection method, the Luhn algorithm, selection sort, merge sort, and quicksort.
 
 - **Dictionary and Sets**
   Covers dictionary operations, set usage, validation logic, and additional topic notes.
@@ -136,7 +140,7 @@ This combination makes the repository more representative of my actual learning 
   Covers deeper object-oriented programming concepts such as encapsulation, properties, inheritance, polymorphism, name mangling, abstraction, and OOP-focused Python practice exercises.
 
 - **Certification Projects**
-  Stores project-style exercises related to FreeCodeCamp Python certification preparation.
+  Stores project-style exercises related to FreeCodeCamp Python certification preparation, including budget management, polygon area calculation, hash tables, user configuration management, and Tower of Hanoi recursion practice.
 
 ### HackerRank Practice
 
@@ -160,7 +164,7 @@ This combination makes the repository more representative of my actual learning 
   Output or supporting text file related to Task 6.
 
 - `FreeCodeCamp Certifications Python/`
-  Topic-based review notes and coding exercises completed as supplementary structured study.
+  Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
@@ -226,7 +230,10 @@ python tugas5.py
 python tugas6.py
 python "FreeCodeCamp Certifications Python/Classes and Objects/Build_an_Email_Simulator.py"
 python "FreeCodeCamp Certifications Python/Linear_Data_Structures/Build_a_Linked_List.py"
+python "FreeCodeCamp Certifications Python/Algorithms/Implement_the_Binary_Search_Algorithm.py"
+python "FreeCodeCamp Certifications Python/Algorithms/Implement_the_Quicksort_Algorithm.py"
 python "FreeCodeCamp Certifications Python/Object Oriented Program (OOP)/Build_a_Player_Interface.py"
+python "FreeCodeCamp Certifications Python/Certification Projects/Implement_the_Tower_of_Hanoi_Algorithm.py"
 python "HackerRank/introduction/python_if_else.py"
 ```
 
