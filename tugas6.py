@@ -4,20 +4,20 @@
 
 import os
 
-# Fungsi untuk memberikan jeda antara soal-soal agar saya bisa membaca soal dengan lebih nyaman. Juga bisa membersihkan layar jika diperlukan.
-def jeda(bersihkan_layar=False):
+# Adds a pause between exercises and optionally clears the terminal.
+def pause_between_sections(clear_screen=False):
     """
-    Fungsi untuk memberikan jeda.
-    Parameter bersihkan_layar (opsional): Jika True, terminal akan dibersihkan.
+    Pause before continuing to the next exercise.
+    Parameter clear_screen (optional): Clear the terminal when set to True.
     """
     print("\n" + "="*50)
     input("👉 Tekan [ENTER] untuk lanjut ke soal berikutnya...")
     
-    # Mengecek apakah user minta layarnya dibersihkan
-    if bersihkan_layar:
+    # Check whether the user requested a clean terminal screen.
+    if clear_screen:
         os.system('cls' if os.name == 'nt' else 'clear')
     else:
-        # Kalau tidak dibersihkan, cetak garis penutup biar rapi
+        # Print a closing separator when the screen is not cleared.
         print("="*50 + "\n")
         
 """
@@ -25,31 +25,30 @@ Task 6 - Python Function and Class
 Infinite Learning Batch 10
 
 Author: Muhammad Zaenal Abidin Abdurrahman
-Description: This script demonstrates python Python Modules, File I/O, & OOP concepts in a clear and structured way.
+Description: This script demonstrates Python modules, File I/O, and OOP concepts in a clear and structured way.
 """
 
-import os
 import numpy as np
 import pandas as pd
 
-# Soal 4: Class OOP sederhana (Dibuat sebelum main agar lebih terstruktur)
-# What is OOP? OOP (Object-Oriented Programming) adalah paradigma pemrograman yang menggunakan "objek" untuk merancang aplikasi dan program. OOP memungkinkan kita untuk membuat kelas (class) yang merupakan blueprint untuk objek, dan objek adalah instance dari kelas tersebut. Dengan OOP, kita bisa mengorganisir kode dengan lebih baik, membuatnya lebih modular, dan memudahkan pemeliharaan serta pengembangan di masa depan.
+# Exercise 4: Basic OOP class, defined before main to keep the script structured.
+# OOP (Object-Oriented Programming) is a programming paradigm that uses objects to organize code around data and behavior.
 # A simple analogy for OOP is like a blueprint for a house. The blueprint (class) defines the structure and features of the house, such as the number of rooms, doors, and windows. When you build a house based on that blueprint, you create an object (instance) of the class. Each house (object) can have its own unique characteristics (like color or size), but they all share the same structure defined by the blueprint (class). This allows us to create multiple houses (objects) from the same blueprint (class) without having to rewrite the code for each house.
 
 class GradeBook:
     def __init__(self, df: pd.DataFrame) -> None:
         """
-        Konstruktor untuk kelas GradeBook.
-        Parameter df: DataFrame yang berisi data mahasiswa dan nilai mereka.
+        Constructor for the GradeBook class.
+        Parameter df: DataFrame containing student data and scores.
         """
         self.df = df
         
     def average(self) -> float:
-        """Menghitung rata-rata nilai."""
+        """Calculate the average score."""
         return float(self.df["nilai"].mean())
     
     def pass_rate(self, threshold: float = 70.0) -> float:
-        """Menghitung persentase mahasiswa yang lulus berdasarkan threshold."""
+        """Calculate the passing percentage based on a score threshold."""
         total_students = len(self.df)
         if total_students == 0:
             return 0.0
@@ -57,80 +56,80 @@ class GradeBook:
         return float((passed_students / total_students) * 100)
     
     def save_summary(self, filename: str) -> None:
-        """Menyimpan ringkasan statistik ke file."""
-        #Two way of doing this:
+        """Save the statistical summary to a file."""
+        # Two equivalent counting approaches:
         # first way:
-        jumlah_lulus = (self.df["status"] == "LULUS").sum()
+        passed_count = (self.df["status"] == "LULUS").sum()
         # second way:
-        jumlah_tidak_lulus = len(self.df[self.df["status"] == "TIDAK LULUS"])
+        failed_count = len(self.df[self.df["status"] == "TIDAK LULUS"])
          
         with open(filename, "w") as file:
             file.write("=== Ringkasan GradeBook ===\n\n")
             file.write(f"Jumlah mahasiswa: {len(self.df)}\n")
             file.write(f"Rata-rata nilai: {self.average():.2f}\n")
             file.write(f"Persentase lulus (threshold 70): {self.pass_rate():.2f}%\n")
-            file.write(f"Jumlah mahasiswa yang lulus: {jumlah_lulus}\n")
-            file.write(f"Jumlah mahasiswa yang tidak lulus: {jumlah_tidak_lulus}\n")
+            file.write(f"Jumlah mahasiswa yang lulus: {passed_count}\n")
+            file.write(f"Jumlah mahasiswa yang tidak lulus: {failed_count}\n")
             file.write("\nData Mahasiswa:\n")
             file.write(self.df.to_string(index=False))
     
     def __str__(self):
-        # Merepresentasikan object dalam bentuk string yang rapi
+        # Represent the object with a concise summary string.
         return f"[GradeBook Info] Jumlah Data: {len(self.df)} Mahasiswa | Rata-rata Kelas: {self.average():.2f}"
 
 if __name__ == "__main__":
-    # Agar output konsisten, kita set random seed untuk numpy
+    # Set a random seed to keep the output consistent.
     np.random.seed(42)
     
     print("=== Tugas 6: PYTHON FUNCTION AND CLASS ===")
     
-    # Soal 1: Numpy - Array Creation & Manipulation
+    # Exercise 1: NumPy - Array Creation and Manipulation
     print("\n--- Soal 1: Numpy - Array Creation & Manipulation ---")
     
-    nilai_ujian = np.random.randint(50, 101, size=10)  # Membuat array dengan 10 nilai acak antara 50 dan 100
-    print("Data Array Nilai Ujian:", nilai_ujian) # Here is the output for this session: Data Array Nilai Ujian: [88 78 64 92 57 70 88 68 72 60]
+    exam_scores = np.random.randint(50, 101, size=10)  # Create an array with 10 random scores between 50 and 100.
+    print("Data Array Nilai Ujian:", exam_scores) # Here is the output for this session: Data Array Nilai Ujian: [88 78 64 92 57 70 88 68 72 60]
     
-    rata2 = np.mean(nilai_ujian)
-    median = np.median(nilai_ujian)
-    std_dev = np.std(nilai_ujian)
-    nilai_min = np.min(nilai_ujian)
-    nilai_max = np.max(nilai_ujian)
+    mean_score = np.mean(exam_scores)
+    median = np.median(exam_scores)
+    std_dev = np.std(exam_scores)
+    min_score = np.min(exam_scores)
+    max_score = np.max(exam_scores)
 
     print("\nStatistik Deskriptif:")
-    print(f"Rata-rata        : {rata2:.2f}")
+    print(f"Rata-rata        : {mean_score:.2f}")
     print(f"Median           : {median:.2f}")
     print(f"Standar deviasi  : {std_dev:.2f}")
-    print(f"Nilai minimum    : {nilai_min}")
-    print(f"Nilai maksimum   : {nilai_max}")
+    print(f"Nilai minimum    : {min_score}")
+    print(f"Nilai maksimum   : {max_score}")
     
-    jeda()
+    pause_between_sections()
     
-    # Soal 2: Pandas - DataFrame Creation & Manipulation
+    # Exercise 2: pandas - DataFrame Creation and Manipulation
     print("\n--- Soal 2: Pandas - DataFrame Creation & Manipulation ---")
     
-    data_mahasiswa = {
+    student_data = {
         "nama" : ["Alice", "Bob", "Charlie", "David", "Eve"],
         "nim": ["IL1001", "IL1002", "IL1003", "IL1004", "IL1005"],
-        "nilai": nilai_ujian[:5]  # Menggunakan 5 nilai pertama untuk mahasiswa yaitu : [88 78 64 92 57]
+        "nilai": exam_scores[:5]  # Use the first five scores for the student dataset.
         
     }
     
     print("Data Mahasiswa (Dictionary):")
-    for key, value in data_mahasiswa.items():
+    for key, value in student_data.items():
         print(f"  {key}: {value}") # Just checking the output for this part, to make sure everything is correct
         
-    df = pd.DataFrame(data_mahasiswa)
+    df = pd.DataFrame(student_data)
     print("\nDataFrame Mahasiswa:")
     print(df)
     
-    df["status"] = df["nilai"].apply(lambda x: "LULUS" if x >= 70 else "TIDAK LULUS") # Menambahkan kolom status berdasarkan nilai dengan threshold 70. Lambda secara sederhana dan mudah dipahami untuk pemula adalah fungsi anonim yang digunakan untuk menerapkan logika sederhana langsung pada kolom DataFrame. Dalam hal ini, lambda digunakan untuk menentukan apakah seorang mahasiswa lulus atau tidak berdasarkan nilai ujian mereka. Jika nilai 70 atau lebih, maka statusnya "LULUS", jika kurang dari 70, maka statusnya "TIDAK LULUS". Penggunaan lambda membuat kode lebih ringkas dan mudah dibaca, terutama untuk operasi sederhana seperti ini.
-    # Bentuk panjang dari lambda di atas bisa ditulis sebagai berikut:
-    # def tentukan_status(x):
+    df["status"] = df["nilai"].apply(lambda x: "LULUS" if x >= 70 else "TIDAK LULUS") # Add the status column based on a score threshold of 70.
+    # The longer form of the lambda expression above could be written as follows:
+    # def determine_status(x):
     #     if x >= 70:
     #         return "LULUS"
     #     else:
     #         return "TIDAK LULUS"
-    # df["status"] = df["nilai"].apply(tentukan_status)
+    # df["status"] = df["nilai"].apply(determine_status)
     
     # Another way to add the status column without using lambda is by using np.where, which is also a common method in pandas for conditional assignment:
     # df["status"] = np.where(df["nilai"] >= 70, "LULUS", "TIDAK LULUS")
@@ -138,53 +137,53 @@ if __name__ == "__main__":
     print("5 Baris pertama setelah menambahkan kolom status:")
     print(df.head())
     
-    jeda()
+    pause_between_sections()
     
-    # Soal 3: FILE I/O - Menulis dan Membaca File .txt
+    # Exercise 3: File I/O - Writing and Reading a .txt File
     print("\n--- Soal 3: FILE I/O - Menulis dan Membaca File .txt ---")
-    nama_file = "ringkasaan_tugas6.txt"
+    output_filename = "ringkasaan_tugas6.txt"
     
-    # two way of doinnt this: 
-    jumlah_lulus = len(df[df["status"] == "LULUS"]) # Kode ini berjalan dengan bertingkat, kode pertama yaitu df["status"] == "LULUS" akan menghasilkan Series boolean yang menunjukkan baris mana yang memiliki status "LULUS". Kemudian, df[df["status"] == "LULUS"] akan menghasilkan DataFrame baru yang hanya berisi baris-baris tersebut. Terakhir, len() digunakan untuk menghitung jumlah baris dalam DataFrame baru tersebut, yang sama dengan jumlah mahasiswa yang lulus.
-    jumlah_tidak_lulus = (df["status"] == "TIDAK LULUS").sum() # Kode ini bekerja dengan memeriksa setiap elemen dalam kolom "status" untuk melihat apakah nilainya adalah "TIDAK LULUS". Hasilnya adalah Series boolean yang menunjukkan True untuk baris yang tidak lulus dan False untuk yang lulus. Kemudian, dengan menggunakan .sum(), kita menghitung jumlah True dalam Series tersebut, yang sama dengan jumlah mahasiswa yang tidak lulus. TRUE dihitung sebagai 1 dan FALSE dihitung sebagai 0, sehingga hasil akhirnya adalah jumlah mahasiswa yang tidak lulus.
+    # Two ways to count rows by status:
+    passed_count = len(df[df["status"] == "LULUS"]) # Filter rows with passing status and count the resulting DataFrame length.
+    failed_count = (df["status"] == "TIDAK LULUS").sum() # Boolean True values are counted as 1, so sum() gives the failed-student count.
     
-    with open(nama_file, "w") as file:
-        # Menulis ringkasan keseluruhan kode dari awal hingga titik ini dan outputnya.
+    with open(output_filename, "w") as file:
+        # Write the script summary and the generated output up to this point.
         file.write("=== Ringkasan Tugas 6: Python Function and Class ===\n\n")
         file.write("1. Numpy - Array Creation & Manipulation:\n")
-        file.write(f"  Data Array Nilai Ujian: {nilai_ujian}\n")
-        file.write(f"  Rata-rata: {rata2:.2f}\n")
+        file.write(f"  Data Array Nilai Ujian: {exam_scores}\n")
+        file.write(f"  Rata-rata: {mean_score:.2f}\n")
         file.write(f"  Median: {median:.2f}\n")
         file.write(f"  Standar deviasi: {std_dev:.2f}\n")
-        file.write(f"  Nilai minimum: {nilai_min}\n")
-        file.write(f"  Nilai maksimum: {nilai_max}\n\n")
+        file.write(f"  Nilai minimum: {min_score}\n")
+        file.write(f"  Nilai maksimum: {max_score}\n\n")
 
         file.write("2. Pandas - DataFrame Creation & Manipulation:\n")
         file.write("  Data Mahasiswa (Dictionary):\n")
-        for key, value in data_mahasiswa.items():
+        for key, value in student_data.items():
             file.write(f"    {key}: {value}\n")
         file.write("\n  DataFrame Mahasiswa:\n")
-        file.write(df.to_string(index=False)) # Menulis DataFrame ke file tanpa index
+        file.write(df.to_string(index=False)) # Write the DataFrame without the index column.
         
         file.write("\n\n3. FILE I/O - Menulis dan Membaca File .txt:\n")
         file.write(f"  Jumlah baris dalam DataFrame: {len(df)}\n")
-        file.write(f"  Jumlah mahasiswa yang lulus: {jumlah_lulus}\n")
-        file.write(f"  Jumlah mahasiswa yang tidak lulus: {jumlah_tidak_lulus}\n")
+        file.write(f"  Jumlah mahasiswa yang lulus: {passed_count}\n")
+        file.write(f"  Jumlah mahasiswa yang tidak lulus: {failed_count}\n")
         
-    print(f"File '{nama_file}' berhasil dibuat di: {os.path.abspath(nama_file)}")
+    print(f"File '{output_filename}' berhasil dibuat di: {os.path.abspath(output_filename)}")
     
-    jeda()
+    pause_between_sections()
     
-    # Soal 4: OOP - Membuat kelas GradeBook
+    # Exercise 4: OOP - Creating the GradeBook Class
     print("\n--- Soal 4: OOP - Membuat kelas GradeBook ---")
     gradebook = GradeBook(df)
-    print(gradebook) # Output dari print(gradebook) akan menampilkan informasi tentang jumlah data mahasiswa dan rata-rata nilai kelas, yang dihasilkan dari metode __str__ yang telah kita definisikan dalam kelas GradeBook. Outputnya akan terlihat seperti ini: [GradeBook Info] Jumlah Data: 5 Mahasiswa | Rata-rata Kelas: 75.00
+    print(gradebook) # Printing gradebook calls __str__ and displays the formatted GradeBook summary.
     print(f"\nAverage\t\t: {gradebook.average():.2f}")
     print(f"Pass Rate\t: {gradebook.pass_rate():.2f}%")
     
     # This will rewrite the previous file.
-    gradebook.save_summary(nama_file)
-    print(f"Ringkasan tambahan berhasil disimpan ke '{nama_file}'")    
+    gradebook.save_summary(output_filename)
+    print(f"Ringkasan tambahan berhasil disimpan ke '{output_filename}'")
     
 
         

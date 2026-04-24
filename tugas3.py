@@ -2,20 +2,20 @@
 
 import os
 
-# Fungsi untuk memberikan jeda antara soal-soal agar saya bisa membaca soal dengan lebih nyaman. Juga bisa membersihkan layar jika diperlukan.
-def jeda(bersihkan_layar=False):
+# Adds a pause between exercises and optionally clears the terminal.
+def pause_between_sections(clear_screen=False):
     """
-    Fungsi untuk memberikan jeda.
-    Parameter bersihkan_layar (opsional): Jika True, terminal akan dibersihkan.
+    Pause before continuing to the next exercise.
+    Parameter clear_screen (optional): Clear the terminal when set to True.
     """
     print("\n" + "="*50)
     input("👉 Tekan [ENTER] untuk lanjut ke soal berikutnya...")
     
-    # Mengecek apakah user minta layarnya dibersihkan
-    if bersihkan_layar:
+    # Check whether the user requested a clean terminal screen.
+    if clear_screen:
         os.system('cls' if os.name == 'nt' else 'clear')
     else:
-        # Kalau tidak dibersihkan, cetak garis penutup biar rapi
+        # Print a closing separator when the screen is not cleared.
         print("="*50 + "\n")
         
 """
@@ -28,66 +28,66 @@ Description: This script demonstrates basic Python concepts in a clear and struc
 
 print("=== Tugas 3: PYTHON BASICS ===")
 
-# Soal 1: Variabel dan Tipe Data
+# Exercise 1: Variables and Data Types
 print("\n--- Soal 1: Variabel dan Tipe Data ---")
-nama = "Muhammad Zaenal Abidin Abdurrahman"
-umur = 20
-ipk = 3.91
-sedang_belajar_python = True
-hobi = ["ngoding", "belajar", "catur", "anime"]
+full_name = "Muhammad Zaenal Abidin Abdurrahman"
+age = 20
+gpa = 3.91
+is_learning_python = True
+hobbies = ["ngoding", "belajar", "catur", "anime"]
 
-print("Nama:", nama, "| Tipe:", type(nama))
-print("Umur:", umur, "| Tipe:", type(umur))
-print("IPK:", ipk, "| Tipe:", type(ipk))
-print("Sedang Belajar Python:", sedang_belajar_python, "| Tipe:", type(sedang_belajar_python))
-print("Hobi:", hobi, "| Tipe:", type(hobi))
+print("Nama:", full_name, "| Tipe:", type(full_name))
+print("Umur:", age, "| Tipe:", type(age))
+print("IPK:", gpa, "| Tipe:", type(gpa))
+print("Sedang Belajar Python:", is_learning_python, "| Tipe:", type(is_learning_python))
+print("Hobi:", hobbies, "| Tipe:", type(hobbies))
 
-jeda()
+pause_between_sections()
 
-# Soal 2: Manipulasi String
+# Exercise 2: String Manipulation
 print("\n--- Soal 2: Manipulasi String ---")
-depan = "infinite"
-belakang = "learning"
-gabungan = depan + " " + belakang
-print("Gabungan String:", gabungan)
-print("Panjang String:", len(gabungan))
-print("Huruf besar:", gabungan.upper())
-print("Huruf kecil:", gabungan.lower())
+first_word = "infinite"
+second_word = "learning"
+combined_text = first_word + " " + second_word
+print("Gabungan String:", combined_text)
+print("Panjang String:", len(combined_text))
+print("Huruf besar:", combined_text.upper())
+print("Huruf kecil:", combined_text.lower())
 
-jeda()
+pause_between_sections()
 
-# Soal 3: Operasi Matematika sederhana
+# Exercise 3: Basic Mathematical Operations
 print("\n--- Soal 3: Operasi Matematika ---")
-angka1 = 25
-angka2 = 4
+number_1 = 25
+number_2 = 4
 
-print(f"{angka1} + {angka2} =", angka1 + angka2)
-print(f"{angka1} - {angka2} =", angka1 - angka2)
-print(f"{angka1} * {angka2} =", angka1 * angka2)
-print(f"{angka1} / {angka2} =", angka1 / angka2)
-print(f"{angka1} // {angka2} =", angka1 // angka2)
-print(f"{angka1} % {angka2} =", angka1 % angka2)
+print(f"{number_1} + {number_2} =", number_1 + number_2)
+print(f"{number_1} - {number_2} =", number_1 - number_2)
+print(f"{number_1} * {number_2} =", number_1 * number_2)
+print(f"{number_1} / {number_2} =", number_1 / number_2)
+print(f"{number_1} // {number_2} =", number_1 // number_2)
+print(f"{number_1} % {number_2} =", number_1 % number_2)
 
-jeda()
+pause_between_sections()
 
-# Soal 4: List dan akses elemen
+# Exercise 4: Lists and Element Access
 print("\n--- Soal 4: List dan Akses Elemen ---")
-buah = ["apel", "jeruk", "pisang", "mangga", "anggur"]
-print("Daftar Buah:", buah)
-print("Buah pertama (Elemen pertama):", buah[0])
-print("Buah terakhir (Elemen terakhir):", buah[-1])
+fruits = ["apel", "jeruk", "pisang", "mangga", "anggur"]
+print("Daftar Buah:", fruits)
+print("Buah pertama (Elemen pertama):", fruits[0])
+print("Buah terakhir (Elemen terakhir):", fruits[-1])
 
-buah.append("semangka")
-print("Setelah append 'semangka':", buah)
+fruits.append("semangka")
+print("Setelah append 'semangka':", fruits)
 
-buah.remove("jeruk")
-print("Setelah remove 'jeruk':", buah)
+fruits.remove("jeruk")
+print("Setelah remove 'jeruk':", fruits)
 
-jeda()
+pause_between_sections()
 
-# Soal 5: Input dari User
+# Exercise 5: User Input
 print("\n--- Soal 5: Input dari User ---")
-nama_user = input("Masukkan nama Anda: ")
-umur_user = int(input("Masukkan umur Anda: "))
+user_name = input("Masukkan nama Anda: ")
+user_age = int(input("Masukkan umur Anda: "))
 
-print(f"Holaa amigoss, nama saya {nama_user} dan umur saya {umur_user} tahun.")
+print(f"Holaa amigoss, nama saya {user_name} dan umur saya {user_age} tahun.")

@@ -2,20 +2,20 @@
 
 import os
 
-# Fungsi untuk memberikan jeda antara soal-soal agar saya bisa membaca soal dengan lebih nyaman. Juga bisa membersihkan layar jika diperlukan.
-def jeda(bersihkan_layar=False):
+# Adds a pause between exercises and optionally clears the terminal.
+def pause_between_sections(clear_screen=False):
     """
-    Fungsi untuk memberikan jeda.
-    Parameter bersihkan_layar (opsional): Jika True, terminal akan dibersihkan.
+    Pause before continuing to the next exercise.
+    Parameter clear_screen (optional): Clear the terminal when set to True.
     """
     print("\n" + "="*50)
     input("👉 Tekan [ENTER] untuk lanjut ke soal berikutnya...")
     
-    # Mengecek apakah user minta layarnya dibersihkan
-    if bersihkan_layar:
+    # Check whether the user requested a clean terminal screen.
+    if clear_screen:
         os.system('cls' if os.name == 'nt' else 'clear')
     else:
-        # Kalau tidak dibersihkan, cetak garis penutup biar rapi
+        # Print a closing separator when the screen is not cleared.
         print("="*50 + "\n")
         
 """
@@ -28,7 +28,7 @@ Description: This script demonstrates python data structures concepts in a clear
 
 print("=== Tugas 4: PYTHON DATA STRUCTURES ===")
 
-# Soal 1: List - akses & manipulasi
+# Exercise 1: Lists - Access and Manipulation
 print("\n--- Soal 1: List - akses & manipulasi ---")
 data_list = ["Python", "Numpy", 10, 3.14, True, "AI", 2026]
 print("List:", data_list)
@@ -37,7 +37,7 @@ print("Elemen terakhir:", data_list[-1])
 print("Slice [1:4]:", data_list[1:4])
 print("Slicing dengan step [::2]:", data_list[::2])
 
-print("\nManipuasi List:")
+print("\nManipulasi List:")
 print("Sebelum:", data_list)
 
 data_list.append("Machine Learning")
@@ -55,15 +55,15 @@ print("Setelah remove:", data_list)
 data_list[2] = "Data Analysis"
 print("Setelah update index 2:", data_list)
 
-elemen_pop = data_list.pop()
+popped_element = data_list.pop()
 print("Setelah pop:", data_list)
-print("Elemen yang dipop:", elemen_pop)
+print("Elemen yang dipop:", popped_element)
 
 print("\n\nSetelah proses manipulasi, List sekarang:", data_list)
 
-jeda()
+pause_between_sections()
 
-# Soal 2: Tuple - immutability & unpacking
+# Exercise 2: Tuples - Immutability and Unpacking
 print("\n--- Soal 2: Tuple - immutability & unpacking ---")
 data_tuple = ("Bandung", "Jakarta", "Surabaya", "Malang", "Yogyakarta")
 print("Tuple:", data_tuple)
@@ -71,16 +71,16 @@ print("Panjang Tuple:", len(data_tuple))
 print("Elemen pertama:", data_tuple[0])
 print("Elemen indeks ke-2:", data_tuple[2])
 
-kota1, kota2, *kota_lain = data_tuple
+city_one, city_two, *other_cities = data_tuple
 print("Unpacking Tuple:")
-print("Kota 1:", kota1)
-print("Kota 2:", kota2)
-print("Kota lain:", kota_lain) 
-# Tuple tidak bisa diubah, jadi kita tidak bisa melakukan operasi seperti append atau insert. Kita hanya bisa membuat tuple baru jika ingin mengubah isinya.
+print("Kota 1:", city_one)
+print("Kota 2:", city_two)
+print("Kota lain:", other_cities)
+# Tuples are immutable, so append and insert operations are not available. Create a new tuple when changes are needed.
 
-jeda()
+pause_between_sections()
 
-# Soal 3: Set - uniqueness & operasi himpunan
+# Exercise 3: Sets - Uniqueness and Set Operations
 print("\n--- Soal 3: Set - uniqueness & operasi himpunan ---")
 set_a = {1, 2, 3, 4, 4, 5}
 set_b = {4, 5, 6, 7, 7, 8}
@@ -96,42 +96,42 @@ print("\nOperasi himpunan dengan operator:")
 print("Union (A ∪ B) dengan operator |:", set_a | set_b)
 print("Intersection (A ∩ B) dengan operator &:", set_a & set_b)
 print("Difference (A - B) dengan operator -:", set_a - set_b)
-print("Symmetric Difference (A Δ B) dengan operator ^:", set_a ^ set_b) # Symmetric difference menghasilkan elemen yang hanya ada di salah satu set, tapi tidak di kedua set.
+print("Symmetric Difference (A Δ B) dengan operator ^:", set_a ^ set_b) # Symmetric difference returns elements that exist in only one set, not both.
 
-jeda()
+pause_between_sections()
 
-# Soal 4: Dictionary - akses & manipulasi
+# Exercise 4: Dictionaries - Access and Manipulation
 print("\n--- Soal 4: Dictionary - akses & manipulasi ---")
-mahasiswa = {
+student_profile = {
     "nama": "Muhammad Zaenal Abidin Abdurrahman",
     "umur": 20,
     "nim" : "101012300153",
     "angkatan": 2023,
     "kota": "Bandung"
     }
-print("Dictionary awal:", mahasiswa)
+print("Dictionary awal:", student_profile)
 
-mahasiswa["prodi"] = "S1 Teknik Telekomunikasi"
-mahasiswa["kota"] = "Pasuruan"
-del mahasiswa["nim"]
-print("Dictionary setelah manipulasi:", mahasiswa)
+student_profile["prodi"] = "S1 Teknik Telekomunikasi"
+student_profile["kota"] = "Pasuruan"
+del student_profile["nim"]
+print("Dictionary setelah manipulasi:", student_profile)
 
-print("\nAkses nilai dengan key 'nama':", mahasiswa["nama"])
-print("Akses nilai dengan key 'umur':", mahasiswa.get("umur")) # get dipakai untuk mengakses nilai dengan key, tapi kalau key tidak ada, dia akan mengembalikan None, bukan error seperti kalau kita akses langsung dengan tanda kurung siku. Lebih aman aja kalau kita tidak yakin keynya ada atau tidak.
-print("\nKeys:", mahasiswa.keys())
-print("Keys (list):", list(mahasiswa.keys()))
-print("Values:", mahasiswa.values())
-print("Items (key-value pairs):", mahasiswa.items())
+print("\nAkses nilai dengan key 'nama':", student_profile["nama"])
+print("Akses nilai dengan key 'umur':", student_profile.get("umur")) # get() safely returns None when the key does not exist instead of raising an error.
+print("\nKeys:", student_profile.keys())
+print("Keys (list):", list(student_profile.keys()))
+print("Values:", student_profile.values())
+print("Items (key-value pairs):", student_profile.items())
 
 print("\nIterasi dictionary:")
-for key, value in mahasiswa.items():
+for key, value in student_profile.items():
     print(f"{key}: {value}")
     
-jeda()
+pause_between_sections()
 
-# Soal 5: Nested Structures
+# Exercise 5: Nested Structures
 print("\n--- Soal 5: Nested Structures ---")
-daftar_buku = [
+book_list = [
     {"judul": "Atomic Habits", "penulis": "James Clear", "tahun": 2018},
     {"judul": "Deep Work", "penulis": "Cal Newport", "tahun": 2016},
     {"judul": "Python Crash Course", "penulis": "Eric Matthes", "tahun": 2019},
@@ -139,40 +139,40 @@ daftar_buku = [
 ]
 
 print("Semua judul buku:")
-for buku in daftar_buku:
-    # print(buku) # Kalau kita print buku, dia akan print seluruh dictionarynya, tapi kalau kita print buku["judul"], dia akan print hanya judulnya saja. Kita bisa akses nilai di dalam dictionary dengan menggunakan keynya.
-    print("-", buku["judul"])
+for book in book_list:
+    # print(book) would display the full dictionary, while book["judul"] displays only the title value.
+    print("-", book["judul"])
     
-buku_terbaru = [buku for buku in daftar_buku if buku["tahun"] >= 2017]
+recent_books = [book for book in book_list if book["tahun"] >= 2017]
 print("\nBuku yang diterbitkan tahun 2017 atau lebih baru:")
-for buku in buku_terbaru:
-    print(f"- {buku['judul']} ({buku['tahun']})")
+for book in recent_books:
+    print(f"- {book['judul']} ({book['tahun']})")
     
-jeda()
+pause_between_sections()
 
-# Soal 6: Comprehensions & utilitas
+# Exercise 6: Comprehensions and Utilities
 print("\n--- Soal 6: Comprehensions & utilitas ---")
-angka = list(range(1, 21))
-print("List angka 1-20:", angka)
+numbers = list(range(1, 21))
+print("List angka 1-20:", numbers)
 
-angka_kuadrat = [x**2 for x in angka]
-print("List kuadrat angka 1-20:", angka_kuadrat)
+squared_numbers = [x**2 for x in numbers]
+print("List kuadrat angka 1-20:", squared_numbers)
 
-angka_genap = [x for x in angka if x % 2 == 0]
-print("List angka genap 1-20:", angka_genap)
+even_numbers = [x for x in numbers if x % 2 == 0]
+print("List angka genap 1-20:", even_numbers)
 
-status_angka = {x: "genap" if x % 2 == 0 else "ganjil" for x in range(1, 11)}
-print("\nDictionary status angka 1-10:", status_angka)
+number_status = {x: "genap" if x % 2 == 0 else "ganjil" for x in range(1, 11)}
+print("\nDictionary status angka 1-10:", number_status)
 
-kalimat = "Python Data Structures"
-huruf_unik = {huruf.lower() for huruf in kalimat if huruf != " "} # Cara kerjanya adalah dengan membuat set comprehension yang iterasi setiap huruf dalam kalimat, lalu kita ubah hurufnya menjadi lowercase dan kita filter agar tidak memasukkan spasi. Hasilnya adalah set yang berisi huruf-huruf unik dalam kalimat tersebut. Kita pakai set karena set otomatis akan menghilangkan duplikat, jadi kita akan mendapatkan hanya huruf unik saja.
-print("Set comprehension huruf unik:", huruf_unik)
+sentence = "Python Data Structures"
+unique_letters = {letter.lower() for letter in sentence if letter != " "} # This set comprehension converts each non-space character to lowercase and keeps only unique letters.
+print("Set comprehension huruf unik:", unique_letters)
 
-jeda()
+pause_between_sections()
 
-# Soal 7: Keanggotaan & pencarian sederhana
+# Exercise 7: Membership and Basic Search
 print("\n--- Soal 7: Keanggotaan & pencarian sederhana ---")
-# data_list sudah didefinisikan di soal 1, yaitu : data_list = ["Python", "Numpy", 10, 3.14, True, "AI", 2026]
+# data_list was defined in exercise 1: data_list = ["Python", "Numpy", 10, 3.14, True, "AI", 2026]
 print("List untuk pencarian:", data_list)
 print("'Python' ada di list?", "Python" in data_list)
 print("3.14 ada di list?", 3.14 in data_list)

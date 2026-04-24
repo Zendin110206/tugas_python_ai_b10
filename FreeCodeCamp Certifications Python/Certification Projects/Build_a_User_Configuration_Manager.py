@@ -37,67 +37,67 @@ def view_settings(user_settings):
     if not user_settings:
         return 'No settings available.'
     else:
-        teks_hasil = 'Current User Settings:\n'
+        result_text = 'Current User Settings:\n'
         for key, value in user_settings.items():
-            teks_hasil += f"{key.capitalize()}: {value}\n"
-        return teks_hasil
+            result_text += f"{key.capitalize()}: {value}\n"
+        return result_text
 
 # ==========================================
-# UJIAN FINAL: USER CONFIGURATION MANAGER)
+# FINAL TEST: USER CONFIGURATION MANAGER
 # ==========================================
 
-# 0. Siapkan dictionary kosong
+# 0. Prepare an empty dictionary.
 test_settings = {}
-print("--- MULAI TES ---\n")
+print("--- START TEST ---\n")
 
 # ==========================================
-# TES 1: VIEW (Saat Masih Kosong)
+# TEST 1: VIEW (Empty State)
 # ==========================================
-print("1. TES VIEW (Kosong)")
+print("1. TEST VIEW (Empty)")
 print(view_settings(test_settings))
-# EKSPEKTASI OUTPUT: 
+# EXPECTED OUTPUT:
 # No settings available.
 print("-" * 40)
 
 # ==========================================
-# TES 2: ADD (Normal & Jebakan Huruf Besar)
+# TEST 2: ADD (Normal and Mixed Case)
 # ==========================================
-print("2. TES ADD (Normal & Huruf Besar)")
+print("2. TEST ADD (Normal and Mixed Case)")
 print(add_setting(test_settings, ("THEME", "DARK")))
 print(add_setting(test_settings, ("Language", "English")))
 print(add_setting(test_settings, ("notifications", "ENABLED")))
-# EKSPEKTASI OUTPUT: 
+# EXPECTED OUTPUT:
 # Setting 'theme' added with value 'dark' successfully!
 # Setting 'language' added with value 'english' successfully!
 # Setting 'notifications' added with value 'enabled' successfully!
 print("-" * 40)
 
 # ==========================================
-# TES 3: ADD (Gagal - Duplikat)
+# TEST 3: ADD (Duplicate Failure)
 # ==========================================
-print("3. TES ADD (Duplikat)")
+print("3. TEST ADD (Duplicate)")
 print(add_setting(test_settings, ("theme", "light")))
-# EKSPEKTASI OUTPUT: 
+# EXPECTED OUTPUT:
 # Setting 'theme' already exists! Cannot add a new setting with this name.
 print("-" * 40)
 
 # ==========================================
-# TES 4: UPDATE (Berhasil & Gagal)
+# TEST 4: UPDATE (Success and Failure)
 # ==========================================
-print("4. TES UPDATE")
-print(update_setting(test_settings, ("Theme", "light"))) # Berhasil
-print(update_setting(test_settings, ("Volume", "high"))) # Gagal (Belum ada)
-# EKSPEKTASI OUTPUT:
+print("4. TEST UPDATE")
+print(update_setting(test_settings, ("Theme", "light"))) # Success
+print(update_setting(test_settings, ("Volume", "high"))) # Failure (not found)
+# EXPECTED OUTPUT:
 # Setting 'theme' updated to 'light' successfully!
 # Setting 'volume' does not exist! Cannot update a non-existing setting.
 print("-" * 40)
 
 # ==========================================
-# TES 5: VIEW (Saat Sudah Ada Isi)
+# TEST 5: VIEW (Populated State)
 # ==========================================
-print("5. TES VIEW (Ada Isi)")
+print("5. TEST VIEW (Populated)")
 print(view_settings(test_settings))
-# EKSPEKTASI OUTPUT:
+# EXPECTED OUTPUT:
 # Current User Settings:
 # Theme: light
 # Language: english
@@ -105,21 +105,21 @@ print(view_settings(test_settings))
 print("-" * 40)
 
 # ==========================================
-# TES 6: DELETE (Berhasil & Gagal)
+# TEST 6: DELETE (Success and Failure)
 # ==========================================
-print("6. TES DELETE")
-print(delete_setting(test_settings, "LANGUAGE")) # Berhasil
-print(delete_setting(test_settings, "font_size")) # Gagal
-# EKSPEKTASI OUTPUT:
+print("6. TEST DELETE")
+print(delete_setting(test_settings, "LANGUAGE")) # Success
+print(delete_setting(test_settings, "font_size")) # Failure
+# EXPECTED OUTPUT:
 # Setting 'language' deleted successfully!
 # Setting not found!
 print("-" * 40)
 
 # ==========================================
-# TES 7: CEK HASIL AKHIR
+# TEST 7: CHECK FINAL RESULT
 # ==========================================
-print("7. CEK HASIL AKHIR DI DICTIONARY")
+print("7. CHECK FINAL DICTIONARY RESULT")
 print(test_settings)
-# EKSPEKTASI OUTPUT:
+# EXPECTED OUTPUT:
 # {'theme': 'light', 'notifications': 'enabled'}
-print("--- TES SELESAI ---")
+print("--- TEST FINISHED ---")

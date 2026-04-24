@@ -2,20 +2,20 @@
 
 import os
 
-# Fungsi untuk memberikan jeda antara soal-soal agar saya bisa membaca soal dengan lebih nyaman. Juga bisa membersihkan layar jika diperlukan.
-def jeda(bersihkan_layar=False):
+# Adds a pause between exercises and optionally clears the terminal.
+def pause_between_sections(clear_screen=False):
     """
-    Fungsi untuk memberikan jeda.
-    Parameter bersihkan_layar (opsional): Jika True, terminal akan dibersihkan.
+    Pause before continuing to the next exercise.
+    Parameter clear_screen (optional): Clear the terminal when set to True.
     """
     print("\n" + "="*50)
     input("👉 Tekan [ENTER] untuk lanjut ke soal berikutnya...")
     
-    # Mengecek apakah user minta layarnya dibersihkan
-    if bersihkan_layar:
+    # Check whether the user requested a clean terminal screen.
+    if clear_screen:
         os.system('cls' if os.name == 'nt' else 'clear')
     else:
-        # Kalau tidak dibersihkan, cetak garis penutup biar rapi
+        # Print a closing separator when the screen is not cleared.
         print("="*50 + "\n")
         
 """
@@ -26,73 +26,76 @@ Author: Muhammad Zaenal Abidin Abdurrahman
 Description: This script demonstrates python function and class concepts in a clear and structured way.   
 """
 
-# Latihan: Pengenalan Fungsi paling dasar
-# Paling dasar terlebih dahulu sebagai awal pembelajaran fungsi
+# Practice: Basic Function Introduction
+# Starts with the simplest structure before moving to assignment-level function exercises.
 
 print("--- Latihan: Pengenalan Fungsi paling dasar ---")
 
-def sapa(nama):
+def greet_with_return(name):
     """
-    Fungsi untuk menyapa seseorang dengan nama yang diberikan.
+    Return a greeting message for a given name.
+
     Parameter:
-    nama (str): Nama orang yang akan disapa.
+    name (str): The name to greet.
     
     Return:
-    str: Pesan sapaan.
+    str: Greeting message.
     """
-    # Kegunaan dari """ .... """ (Docstring, biasanyaa bagus nih kalau mau vibe coding, kasih prompt ke AI yang kalian gunakan untuk jikalau membuat fungsi, suruh kasih docstringnya) adalah untuk memberikan dokumentasi pada fungsi, sehingga ketika kita memanggil help(sapa) akan muncul penjelasan tentang fungsi ini. Ini membantu kita memahami apa yang dilakukan fungsi, parameter yang dibutuhkan, dan apa yang dikembalikan oleh fungsi tersebut.
-    return f"Halo, {nama}! Selamat belajar Python!"
+    # A docstring documents the function so help() can explain its purpose, parameters, and return value.
+    return f"Halo, {name}! Selamat belajar Python!"
 
 print("Menampilkan Docstring dengan help()")
-help(sapa)
-sapaan = sapa("Muhammad Zaenal Abidin Abdurrahman")
-print(sapaan)
+help(greet_with_return)
+greeting_message = greet_with_return("Muhammad Zaenal Abidin Abdurrahman")
+print(greeting_message)
 
 
-# jika langsung dipanggil tanpa disimpan ke variabel. 
-print(sapa("Infinite Learning Batch 10"))
-sapa("Python Function and Class") # ini tidak akan menampilkan apa-apa, jika mau, di dalam fungsi sapa, kita bisa menambahkan print untuk menampilkan hasilnya, tapi karena kita sudah menggunakan return, maka kita bisa menyimpan hasilnya ke variabel dan mencetaknya seperti contoh pertama.
+# Directly calling a function with return still works when the returned value is printed.
+print(greet_with_return("Infinite Learning Batch 10"))
+greet_with_return("Python Function and Class") # This does not display output because the returned value is not printed or stored.
 
-def sapa2(nama):
+def greet_with_print(name):
     """
-    Fungsi untuk menyapa seseorang dengan nama yang diberikan.
+    Print a greeting message for a given name.
+
     Parameter:
-    nama (str): Nama orang yang akan disapa.
+    name (str): The name to greet.
     
     Return:
-    str: Pesan sapaan.
+    None
     """
-    print(f"\nHalo, {nama}! Selamat belajar Python!")
-    print("Ini adalah fungsi sapa2 yang menggunakan print di dalamnya, jadi langsung menampilkan hasilnya tanpa perlu menyimpan ke variabel.")
+    print(f"\nHalo, {name}! Selamat belajar Python!")
+    print("This is the greet_with_print function, which prints the result directly without storing it in a variable.")
 
-sapa2("Muhammad Zaenal Abidin Abdurrahman")
+greet_with_print("Muhammad Zaenal Abidin Abdurrahman")
 
 
-jeda(bersihkan_layar=True)
+pause_between_sections(clear_screen=True)
 
 
 print("=== Tugas 5: PYTHON FUNCTION AND CLASS ===")
 
-# Soal 1: Fungsi - definisi, parameter, return
+# Exercise 1: Functions - Definition, Parameters, and Return Values
 print("\n--- Soal 1: Fungsi - definisi, parameter, return ---")
 
-def greet(nama: str) -> str: # Bedannya dengan fungsi sapa sebelumnya, di sini kita menggunakan type hinting untuk memberikan informasi tentang tipe data parameter dan return value. Ini membantu kita memahami apa yang diharapkan dari fungsi ini.
+def greet(name: str) -> str: # Type hints clarify the expected parameter type and return type.
     """
-    Fungsi untuk menyapa seseorang dengan nama yang diberikan.
+    Return a greeting message for a given name.
+
     Parameter:
-    nama (str): Nama orang yang akan disapa.
+    name (str): The name to greet.
     
     Return:
-    str: Pesan sapaan.
+    str: Greeting message.
     """
-    return f"Halo, {nama}!"
+    return f"Halo, {name}!"
 
 print("Fungsi Sapa")
 print(greet("Zaenal Abidin"))
-print(greet(123)) # ini akan tetap bekerja karena Python adalah bahasa yang dinamis, tapi akan lebih baik jika kita mengikuti type hinting yang sudah kita buat untuk menjaga konsistensi dan menghindari error di masa depan.
+print(greet(123)) # Python still allows this dynamically, but following type hints keeps the code more consistent.
 
-def tambah(a: float, b: float = 0.0) -> float: # Just notes to remember : Type Hinting (Petunjuk) vs Type Casting (Pengubahan) is different. Don't get confused between these two.
-    # Kita bisa nambahain docsting otomatis dengan menggunakan fitur yang ada di code editor kita, biasanya dengan mengetik tiga kali tanda kutip ganda """ dan tekan enter, maka akan otomatis muncul template docstring seperti ini:
+def add_numbers(a: float, b: float = 0.0) -> float: # Type hinting and type casting are different concepts.
+    # Many editors can generate a docstring template automatically after typing triple quotes.
     """_summary_ 
 
     Args:
@@ -101,177 +104,173 @@ def tambah(a: float, b: float = 0.0) -> float: # Just notes to remember : Type H
 
     Returns:
         float: _description_
-    """ # Dengan memberikan nilai default 0.0 pada parameter b, kita memungkinkan untuk memanggil fungsi tambah dengan hanya satu argumen, yaitu a. Jika kita tidak memberikan nilai untuk b saat memanggil fungsi, maka b akan otomatis diinisialisasi dengan nilai default 0.0.
+    """ # The default value allows this function to be called with only one argument.
     return a + b
 
 print("\nFungsi tambah dengan dua angka:")
-print(tambah(5, 10))
-hasil = tambah(3.5, 2.5)
-print(hasil)
+print(add_numbers(5, 10))
+result = add_numbers(3.5, 2.5)
+print(result)
 
-def rata_rata(angka: list[float]) -> float:
+def calculate_average(numbers: list[float]) -> float:
     """
-    Fungsi untuk menghitung rata-rata dari sebuah list angka.
+    Calculate the average value from a list of numbers.
+
     Parameter:
-    angka (list[float]): List yang berisi angka-angka.
+    numbers (list[float]): List of numeric values.
     
     Return:
-    float: Rata-rata dari angka-angka dalam list.
+    float: Average value from the list.
     """
-    if len(angka) == 0: # why? Karena jika kita mencoba menghitung rata-rata dari list kosong, kita akan mendapatkan error pembagian dengan nol. Oleh karena itu, kita perlu memeriksa apakah list tersebut kosong sebelum melakukan perhitungan rata-rata. Jika list kosong, kita bisa mengembalikan nilai default seperti 0.0 atau memberikan pesan bahwa tidak ada angka untuk dihitung rata-ratanya.
+    if len(numbers) == 0: # Guard against division by zero when the input list is empty.
         return 0.0
-    return sum(angka) / len(angka)
+    return sum(numbers) / len(numbers)
 
 print("\nFungsi rata_rata dengan list angka:")
-print(rata_rata([1, 2, 3, 4, 5]))
-print(rata_rata([])) # ini akan mengembalikan 0.0 karena kita sudah menangani kasus list kosong di dalam fungsi rata_rata.
+print(calculate_average([1, 2, 3, 4, 5]))
+print(calculate_average([])) # This returns 0.0 because the empty-list case is handled inside calculate_average().
 
-jeda(bersihkan_layar=True)
+pause_between_sections(clear_screen=True)
 
-# Latihan: Pengenalan Kelas paling dasar
-# Paling dasar terlebih dahulu sebagai awal pembelajaran kelas
+# Practice: Basic Class Introduction
+# Starts with the simplest structure before moving to assignment-level class exercises.
 
 print("--- Latihan: Pengenalan Kelas paling dasar ---")
 
-class Mobil: # type convention untuk nama kelas adalah menggunakan CamelCase, jadi setiap kata diawali dengan huruf kapital tanpa spasi. Ini membantu membedakan kelas dari fungsi atau variabel biasa yang biasanya menggunakan snake_case.
-    def __init__(self, merek, model, tahun): # __init__ adalah method khusus yang digunakan untuk menginisialisasi objek ketika kita membuat instance dari kelas tersebut. Method ini akan dipanggil secara otomatis setiap kali kita membuat objek baru dari kelas Mobil. Parameter self adalah referensi ke instance objek yang sedang dibuat, dan parameter lainnya (merek, model, tahun) adalah data yang kita ingin simpan di dalam objek tersebut.
-        self.merek = merek
+class Car: # Class names conventionally use CamelCase to distinguish them from functions and variables.
+    def __init__(self, brand, model, year): # __init__ initializes each new object instance with the required data.
+        self.brand = brand
         self.model = model
-        self.tahun = tahun
+        self.year = year
 
-    def info_mobil(self):
-        return f"{self.tahun} {self.merek} {self.model}"
+    def get_car_info(self):
+        return f"{self.year} {self.brand} {self.model}"
     
-mobil1 = Mobil("Toyota", "Corolla", 2020) # Penjelasan singkat : Jika tidak mengisi salah satu dari parameter merek, model, atau tahun saat membuat instance mobil1, maka kita akan mendapatkan error karena __init__ method mengharuskan kita untuk memberikan nilai untuk ketiga parameter tersebut. Misalnya, jika kita mencoba membuat mobil1 dengan hanya memberikan merek dan model seperti ini: mobil1 = Mobil("Toyota", "Corolla"), maka kita akan mendapatkan error TypeError yang mengatakan bahwa __init__() missing 1 required positional argument: 'tahun'. Oleh karena itu, kita harus memastikan untuk memberikan semua parameter yang diperlukan saat membuat instance dari kelas Mobil.
-print("Informasi mobil:", mobil1.info_mobil())
+car_1 = Car("Toyota", "Corolla", 2020) # All required constructor arguments must be provided when creating a Car object.
+print("Informasi mobil:", car_1.get_car_info())
 
-class Mahasiswa: 
-    def __init__(self, nama, nim, jurusan):
-        self.nama = nama
-        self.nim = nim
-        self.jurusan = jurusan
+class StudentProfile:
+    def __init__(self, name, student_id, major):
+        self.name = name
+        self.student_id = student_id
+        self.major = major
 
-    def info_mahasiswa(self):
-        return f"Nama: {self.nama}, NIM: {self.nim}, Jurusan: {self.jurusan}"
+    def get_student_info(self):
+        return f"Nama: {self.name}, NIM: {self.student_id}, Jurusan: {self.major}"
+
+    def update_major(self, new_major):
+        self.major = new_major
+        print(f"Jurusan {self.name} telah diperbarui menjadi {self.major}.")
     
-    def update_jurusan(self, jurusan_baru):
-        self.jurusan = jurusan_baru
-        print(f"Jurusan {self.nama} telah diperbarui menjadi {self.jurusan}.")
-    
-    def hapus_nim(self):
-        self.nim = None
-        print(f"NIM {self.nama} telah dihapus.")
+    def clear_student_id(self):
+        self.student_id = None
+        print(f"NIM {self.name} telah dihapus.")
 
-mahasiswa1 = Mahasiswa("Zaenal", "101012300153", "Teknik Telekomunikasi")
-info_mahasiswa1 = mahasiswa1.info_mahasiswa()
-print("\nInformasi mahasiswa:", info_mahasiswa1)
-mahasiswa1.update_jurusan("Teknik Informatika")
-print("Informasi mahasiswa setelah update jurusan:", mahasiswa1.info_mahasiswa())
-mahasiswa1.hapus_nim()
-print("Informasi mahasiswa setelah hapus NIM:", mahasiswa1.info_mahasiswa())
+student_profile_1 = StudentProfile("Zaenal", "101012300153", "Teknik Telekomunikasi")
+student_profile_info = student_profile_1.get_student_info()
+print("\nInformasi mahasiswa:", student_profile_info)
+student_profile_1.update_major("Teknik Informatika")
+print("Informasi mahasiswa setelah update jurusan:", student_profile_1.get_student_info())
+student_profile_1.clear_student_id()
+print("Informasi mahasiswa setelah hapus NIM:", student_profile_1.get_student_info())
 
-class Buku: # tahun terbit boleh kosong
-    def __init__(self, judul, penulis, tahun_terbit=None): # Dengan memberikan nilai default None pada parameter tahun_terbit, kita memungkinkan untuk membuat instance dari kelas Buku tanpa harus memberikan nilai untuk tahun terbit. Jika kita tidak memberikan nilai untuk tahun_terbit saat membuat objek, maka atribut tahun_terbit akan diinisialisasi dengan nilai None. Ini berguna jika kita ingin menyimpan informasi tentang buku yang mungkin tidak memiliki data tahun terbit atau jika kita ingin menambahkan informasi tersebut nanti setelah objek dibuat.
-        self.judul = judul
-        self.penulis = penulis
-        self.tahun_terbit = tahun_terbit
+class Book: # Publication year may be empty.
+    def __init__(self, title, author, publication_year=None): # A default value allows a Book object to be created without publication-year data.
+        self.title = title
+        self.author = author
+        self.publication_year = publication_year
 
-    def info_buku(self):
-        if self.tahun_terbit: # Penulisan singkat seperti ini (tanpa is not None) sudah cukup untuk memeriksa apakah tahun_terbit memiliki nilai yang valid atau tidak. Jika tahun_terbit memiliki nilai yang dianggap "truthy" (seperti angka selain 0, string non-kosong, dll.), maka kondisi ini akan terpenuhi dan kita akan mengembalikan informasi lengkap tentang buku. Namun, jika tahun_terbit adalah None atau nilai "falsy" lainnya, maka kita akan mengembalikan informasi tentang buku tanpa menyertakan tahun terbit.
-            return f"'{self.judul}' oleh {self.penulis}, diterbitkan pada tahun {self.tahun_terbit}."
+    def get_book_info(self):
+        if self.publication_year: # This compact truthiness check is enough for the current optional-year example.
+            return f"'{self.title}' oleh {self.author}, diterbitkan pada tahun {self.publication_year}."
         else:
-            return f"'{self.judul}' oleh {self.penulis}, tahun terbit tidak tersedia."
+            return f"'{self.title}' oleh {self.author}, tahun terbit tidak tersedia."
         
-buku1 = Buku("Atomic Habits", "James Clear", 2018)
-print("\nInformasi buku:", buku1.info_buku())
-buku2 = Buku("Deep Work", "Cal Newport") # Karena kita memberikan nilai default None pada parameter tahun_terbit, kita bisa membuat instance buku2 tanpa menyertakan tahun terbit. Dalam hal ini, atribut tahun_terbit untuk buku2 akan diinisialisasi dengan nilai None, dan ketika kita memanggil metode info_buku(), itu akan mengembalikan informasi tentang buku tanpa menyertakan tahun terbit karena kondisi if self.tahun_terbit tidak terpenuhi.
-print("Informasi buku tanpa tahun terbit:", buku2.info_buku())
+book_1 = Book("Atomic Habits", "James Clear", 2018)
+print("\nInformasi buku:", book_1.get_book_info())
+book_2 = Book("Deep Work", "Cal Newport") # The default publication_year value handles books without year data.
+print("Informasi buku tanpa tahun terbit:", book_2.get_book_info())
 
-jeda(bersihkan_layar=True)
+pause_between_sections(clear_screen=True)
 
-# Soal 2: Class - atribut, method, inheritance
+# Exercise 2: Classes - Attributes, Methods, and Inheritance
 print("\n--- Soal 2: Class - atribut, method, inheritance ---")
 
 class Student: 
     
-    def __init__ (self, nama: str, nim: str, nilai: list[float] | None = None) -> None: # Maksud syntax panjang seperti ini adalah untuk memberikan type hinting pada parameter dan return value dari method __init__. Dengan menggunakan type hinting, kita memberikan informasi tentang tipe data yang diharapkan untuk setiap parameter dan apa yang dikembalikan oleh method tersebut. Dalam hal ini, kita menyatakan bahwa nama harus berupa string, nim harus berupa string, dan nilai harus berupa list yang berisi float atau bisa juga None (jika tidak diberikan). Return type None menunjukkan bahwa method ini tidak mengembalikan nilai apa pun. Type hinting ini membantu meningkatkan keterbacaan kode dan memudahkan pengembangan serta pemeliharaan kode di masa depan.
-        # Kalau misalnya kamu cuman nulis nilai: List[float] | None gitu doank, tanpa None = None, maka kitaa wajibb memberikan nilai untuk parameter nilai setiap kali kita membuat instance dari kelas Student.
-        self.nama = nama
-        self.nim = nim
-        self.nilai = nilai if nilai is not None else [] # Dengan menggunakan nilai if nilai is not None else [], kita memastikan bahwa jika parameter nilai tidak diberikan saat membuat instance Student, maka atribut nilai akan diinisialisasi sebagai list kosong. Ini mencegah masalah yang mungkin timbul jika kita mencoba mengakses atau memodifikasi atribut nilai yang belum diinisialisasi dengan benar.
+    def __init__ (self, name: str, student_id: str, scores: list[float] | None = None) -> None: # Type hints document the expected parameter types and return value.
+        # The None default keeps scores optional while still initializing the attribute as an empty list.
+        self.name = name
+        self.student_id = student_id
+        self.scores = scores if scores is not None else []
         
-    def tambah_nilai(self, skor: float) -> None:
-        self.nilai.append(skor)
+    def add_score(self, score: float) -> None:
+        self.scores.append(score)
     
-    def rata_nilai(self) -> float:
-        if not self.nilai: # Dengan menggunakan if not self.nilai, kita memeriksa apakah list nilai kosong. Jika list nilai kosong, maka kondisi ini akan terpenuhi dan kita akan mengembalikan 0.0 sebagai rata-rata. Ini mencegah error pembagian dengan nol yang akan terjadi jika kita mencoba menghitung rata-rata dari list kosong.
+    def average_score(self) -> float:
+        if not self.scores: # Return 0.0 when the score list is empty to avoid division by zero.
             return 0.0
-        return round(sum(self.nilai) / len(self.nilai), 2) # Dengan menggunakan round(..., 2), kita membulatkan hasil rata-rata ke dua angka desimal. Ini membuat output lebih rapi dan mudah dibaca, terutama jika rata-rata memiliki banyak angka di belakang koma. Misalnya, jika rata-rata adalah 85.66666666666667, dengan menggunakan round(..., 2), hasilnya akan menjadi 85.67.
+        return round(sum(self.scores) / len(self.scores), 2) # Round the average to two decimal places for cleaner output.
     
-    def status_kelulusan(self, threshold: float = 70.9) -> str:
-        rata = self.rata_nilai()
-        if rata >= threshold:
+    def passing_status(self, threshold: float = 70.9) -> str:
+        average_value = self.average_score()
+        if average_value >= threshold:
             return "LULUS"
         
-        # Jika rata_nilai tidak memiliki nilai (list kosong), lebih baik dibuat sendiri kondisi untuk menangani kasus tersebut, misalnya dengan mengembalikan "NILAI TIDAK TERSEDIA" atau sesuatu yang serupa, daripada langsung mengembalikan "TIDAK LULUS". 
-        # Namun, dalam implementasi saat ini, jika rata_nilai mengembalikan 0.0 karena list nilai kosong, maka status_kelulusan akan mengembalikan "TIDAK LULUS". Jadi, dalam konteks ini, kita bisa menganggap bahwa jika tidak ada nilai yang diberikan, maka mahasiswa dianggap tidak lulus.
+        # In this implementation, an empty score list returns 0.0 and therefore maps to "TIDAK LULUS".
         
         else:
             return "TIDAK LULUS"
         
     def __str__(self) -> str: 
-        return f"Student(nama='{self.nama}', nim='{self.nim}', nilai={self.nilai}, status_kelulusan='{self.status_kelulusan()}')"
+        return f"Student(nama='{self.name}', nim='{self.student_id}', nilai={self.scores}, status_kelulusan='{self.passing_status()}')"
     
-    # Penjelasan singkat tentang __str__: Method __str__ adalah method khusus dalam Python yang digunakan untuk menentukan representasi string dari sebuah objek. Ketika kita menggunakan fungsi print() atau str() pada sebuah objek, Python akan memanggil method __str__ untuk mendapatkan representasi string dari objek tersebut. Dengan mengimplementasikan method __str__, kita dapat mengontrol bagaimana objek kita ditampilkan ketika dicetak, sehingga membuat output lebih informatif dan mudah dipahami. Dalam contoh ini, method __str__ memberikan informasi lengkap tentang nama, nim, nilai, dan status kelulusan dari objek Student ketika dicetak.    
+    # __str__ controls how the object is represented when passed to print() or str().
         
 
 print("Percobaan kelas Student secara bertahap:")
 
 student1 = Student("Zaenal", "101012300153")
-print("Informasi student1:", student1) # dengan _str__, ketika kita print student1, itu akan memanggil method __str__ dan menampilkan informasi lengkap tentang student1 sesuai dengan format yang kita tentukan di dalam method __str__.
-student1.tambah_nilai(85.5)
-student1.tambah_nilai(90.0)
+print("Informasi student1:", student1) # Printing student1 calls __str__ and displays the formatted object summary.
+student1.add_score(85.5)
+student1.add_score(90.0)
 print("Informasi student1 setelah menambahkan nilai:", student1)
-print("Rata-rata nilai student1:", student1.rata_nilai())
+print("Rata-rata nilai student1:", student1.average_score())
 
 student2 = Student("Abidin", "101012300154", [60.0, 65.0, 70.0])
 print("\nInformasi student2:", student2)
-print("Rata-rata nilai student2:", student2.rata_nilai())
-print("Status kelulusan student2:", student2.status_kelulusan())
+print("Rata-rata nilai student2:", student2.average_score())
+print("Status kelulusan student2:", student2.passing_status())
 
-jeda(bersihkan_layar=True)
+pause_between_sections(clear_screen=True)
 
-# Soal 3: Pengujian fungsi dan kelas secara keseluruan di dalam if __name__ == "__main__":
+# Exercise 3: Full Function and Class Testing in if __name__ == "__main__"
 
-print("\n--- Soal 3: Pengujian fungsi dan kelas secara keseluruan di dalam if __name__ == \"__main__\": ---")
+print("\n--- Soal 3: Pengujian fungsi dan kelas secara keseluruhan di dalam if __name__ == \"__main__\": ---")
 
-if __name__ == "__main__": # Kegunaan __name__ == "__main__" adalah untuk memastikan bahwa kode di dalam blok ini hanya akan dieksekusi jika script dijalankan secara langsung, bukan ketika diimpor sebagai modul di script lain. Ini memungkinkan kita untuk menulis kode pengujian atau contoh penggunaan fungsi dan kelas tanpa khawatir akan dieksekusi saat modul tersebut diimpor. Dengan menggunakan if __name__ == "__main__", kita dapat menjaga agar kode pengujian tetap terpisah dari definisi fungsi dan kelas, sehingga membuat kode lebih bersih dan mudah dipelihara. 
+if __name__ == "__main__": # This block runs only when the file is executed directly, not when imported as a module.
     print("=== FUNCTIONS ===")
     print(greet("Arifian"))
-    print("tambah(5, 7):", tambah(5, 7))
-    print("tambah(10) =", tambah(10)) # Karena parameter b memiliki nilai default 0.0, kita bisa memanggil fungsi tambah dengan hanya memberikan satu argumen, yaitu a. Dalam hal ini, b akan otomatis diinisialisasi dengan nilai default 0.0, sehingga hasilnya adalah 10 + 0.0 = 10.0.
-    print("rata_rata([80, 90, 100]):", rata_rata([80, 90, 100]))
-    print("rata_rata([]):", rata_rata([]))
+    print("add_numbers(5, 7):", add_numbers(5, 7))
+    print("add_numbers(10) =", add_numbers(10)) # The default second argument keeps this call valid.
+    print("calculate_average([80, 90, 100]):", calculate_average([80, 90, 100]))
+    print("calculate_average([]):", calculate_average([]))
     
     print("\n=== CLASSES ===")  
-    mhs1 = Student("Budi", "A123")
-    mhs1.tambah_nilai(80)
-    mhs1.tambah_nilai(85)
-    mhs1.tambah_nilai(90)
+    student_a = Student("Budi", "A123")
+    student_a.add_score(80)
+    student_a.add_score(85)
+    student_a.add_score(90)
     
-    mhs2 = Student("Siti", "B456")
-    mhs2.tambah_nilai(60)
-    mhs2.tambah_nilai(65)
-    mhs2.tambah_nilai(70)
+    student_b = Student("Siti", "B456")
+    student_b.add_score(60)
+    student_b.add_score(65)
+    student_b.add_score(70)
     
-    print(mhs1)
-    print("Rata-rata nilai mhs1:", mhs1.rata_nilai())
-    print("Status kelulusan mhs1:", mhs1.status_kelulusan())
-    
-    print(mhs2)
-    print("Rata-rata nilai mhs2:", mhs2.rata_nilai())
-    print("Status kelulusan mhs2:", mhs2.status_kelulusan())
-    
+    print(student_a)
+    print("Rata-rata nilai mhs1:", student_a.average_score())
+    print("Status kelulusan mhs1:", student_a.passing_status())
 
-    
-    
+    print(student_b)
+    print("Rata-rata nilai mhs2:", student_b.average_score())
+    print("Status kelulusan mhs2:", student_b.passing_status())
