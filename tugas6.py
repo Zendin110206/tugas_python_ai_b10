@@ -141,7 +141,7 @@ if __name__ == "__main__":
     
     # Exercise 3: File I/O - Writing and Reading a .txt File
     print("\n--- Soal 3: FILE I/O - Menulis dan Membaca File .txt ---")
-    output_filename = "ringkasaan_tugas6.txt"
+    output_filename = "ringkasan_tugas6.txt"
     
     # Two ways to count rows by status:
     passed_count = len(df[df["status"] == "LULUS"]) # Filter rows with passing status and count the resulting DataFrame length.

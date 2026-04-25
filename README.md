@@ -62,8 +62,9 @@ This combination makes the repository more representative of my actual learning 
 ├── tugas6.py
 ├── tugas7_eda.ipynb
 ├── tugas8_data_science.ipynb
-├── ringkasaan_tugas6.txt
+├── ringkasan_tugas6.txt
 ├── assets/
+│   ├── certificates/
 │   └── screenshots/
 ├── docs/
 ├── FreeCodeCamp Certifications Python/
@@ -149,6 +150,21 @@ This combination makes the repository more representative of my actual learning 
 
 ---
 
+## Certifications
+
+- **freeCodeCamp Python Developer Certification**
+  - Completed: April 25, 2026
+  - Scope: approximately 300 hours of Python-focused practice and project work
+  - Credential: [freecodecamp.org/certification/zaenal_abidin/python-v9](https://freecodecamp.org/certification/zaenal_abidin/python-v9)
+
+### Next Learning Track
+
+- **freeCodeCamp Relational Databases Certification**
+  - Status: planned next supplementary track
+  - Repository policy: related files will be added only after project work or review materials are completed, so the repository remains evidence-based and easy to audit.
+
+---
+
 ## Key Files and Directories
 
 - `tugas3.py` to `tugas6.py`
@@ -160,7 +176,7 @@ This combination makes the repository more representative of my actual learning 
 - `tugas8_data_science.ipynb`
   Notebook-based Infinite Learning assignment for Task 8 Data Science Practice, containing structured EDA, feature transformation, price-driver analysis, and feature engineering insights on the housing dataset.
 
-- `ringkasaan_tugas6.txt`
+- `ringkasan_tugas6.txt`
   Output or supporting text file related to Task 6.
 
 - `FreeCodeCamp Certifications Python/`
@@ -171,6 +187,9 @@ This combination makes the repository more representative of my actual learning 
 
 - `assets/screenshots/`
   Reserved for supporting visuals when needed.
+
+- `assets/certificates/`
+  Stores certificate images as supporting archival evidence. Official credential links remain the primary verification source in this README.
 
 - `docs/`
   Reserved for additional project documentation.
