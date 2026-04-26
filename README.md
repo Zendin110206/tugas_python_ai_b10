@@ -46,6 +46,8 @@ The track now includes both script-based Python assignments and notebook-based d
 The **FreeCodeCamp** and **HackerRank** folders are included as complementary study material.  
 They show how I strengthen core Python concepts through extra exercises, review notes, small projects, debugging practice, and problem-solving drills outside the required assignment flow.
 
+The freeCodeCamp Relational Databases track is documented separately because it uses GitHub Codespaces and CodeRoad for many workshops and projects. This repository keeps cleaned notes, command summaries, and project documentation rather than raw Codespaces workspace output.
+
 This combination makes the repository more representative of my actual learning process: not only completing assigned work, but also building consistency through self-directed practice.
 
 ---
@@ -78,6 +80,9 @@ This combination makes the repository more representative of my actual learning 
 │   ├── Classes and Objects/
 │   ├── Object Oriented Program (OOP)/
 │   └── Certification Projects/
+├── FreeCodeCamp Certifications Relational Databases/
+│   ├── Bash Fundamentals/
+│   └── SQL and PostgreSQL/
 └── HackerRank/
     ├── introduction/
     └── python/
@@ -143,6 +148,14 @@ This combination makes the repository more representative of my actual learning 
 - **Certification Projects**
   Stores project-style exercises related to FreeCodeCamp Python certification preparation, including budget management, polygon area calculation, hash tables, user configuration management, and Tower of Hanoi recursion practice.
 
+### freeCodeCamp Relational Databases Practice
+
+- **Bash Fundamentals**
+  Covers command-line navigation, file inspection, file and directory creation, command flags, destructive-command safety, and the cleaned Build a Boilerplate workshop flow.
+
+- **SQL and PostgreSQL**
+  Reserved for SQL/PostgreSQL notes and project documentation, starting with the Celestial Bodies Database certification project when meaningful work is available.
+
 ### HackerRank Practice
 
 - **Introduction**
@@ -160,7 +173,8 @@ This combination makes the repository more representative of my actual learning 
 ### Next Learning Track
 
 - **freeCodeCamp Relational Databases Certification**
-  - Status: planned next supplementary track
+  - Status: in progress
+  - Current focus: Bash Fundamentals and command-line workflow
   - Repository policy: related files will be added only after project work or review materials are completed, so the repository remains evidence-based and easy to audit.
 
 ---
@@ -181,6 +195,9 @@ This combination makes the repository more representative of my actual learning 
 
 - `FreeCodeCamp Certifications Python/`
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
+
+- `FreeCodeCamp Certifications Relational Databases/`
+  Cleaned notes, command summaries, and future project documentation for the freeCodeCamp Relational Databases Certification track.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
@@ -255,6 +272,8 @@ python "FreeCodeCamp Certifications Python/Object Oriented Program (OOP)/Build_a
 python "FreeCodeCamp Certifications Python/Certification Projects/Implement_the_Tower_of_Hanoi_Algorithm.py"
 python "HackerRank/introduction/python_if_else.py"
 ```
+
+The Relational Databases certification track uses GitHub Codespaces and CodeRoad for interactive workshops and projects. The files in `FreeCodeCamp Certifications Relational Databases/` are documentation notes and progress records, not a standalone local replacement for the CodeRoad workspace.
 
 **5. Access notebook-based assignments:**
 
