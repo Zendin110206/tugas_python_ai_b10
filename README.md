@@ -6,10 +6,10 @@
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Conda](https://img.shields.io/badge/conda-environment-green)
 ![Course](https://img.shields.io/badge/course-AI%20Development-orange)
-![Progress](https://img.shields.io/badge/tasks-11%2F31-informational)
+![Progress](https://img.shields.io/badge/tasks-12%2F31-informational)
 
 Structured Python assignment repository for Infinite Learning Batch 10.  
-This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, feature engineering, supervised learning, unsupervised learning, and notebook-based data science workflows.
+This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, feature engineering, supervised learning, unsupervised learning, deep learning fundamentals, and notebook-based data science workflows.
 
 </div>
 
@@ -67,6 +67,7 @@ This combination makes the repository more representative of my actual learning 
 ├── tugas9_ml_linear_regression.ipynb
 ├── tugas10_ml_decision_tree.ipynb
 ├── tugas11_ml_clustering.ipynb
+├── tugas12_ml_fashion_mnist.ipynb
 ├── ringkasan_tugas6.txt
 ├── assets/
 │   ├── certificates/
@@ -124,7 +125,10 @@ This combination makes the repository more representative of my actual learning 
 - [x] **Task 11 — Unsupervised Learning: Mall Customers Clustering**
   Covers customer segmentation using KMeans, DBSCAN, and Agglomerative Clustering, including feature scaling, clustering interpretation, silhouette-score discussion, cluster profiling, KMeans elbow and silhouette checks, DBSCAN parameter exploration, 2D and 3D visual comparison, and business-context analysis for choosing a useful number of customer segments.
 
-- [ ] **Task 12 - 31 — Upcoming**
+- [x] **Task 12 — Deep Learning: Fashion MNIST Image Classification**
+  Covers beginner-focused image classification using TensorFlow/Keras, including Fashion MNIST data understanding, pixel normalization, MLP baseline modeling, controlled MLP hyperparameter tuning, CNN comparison, learning-curve analysis, classification reports, confusion matrices, and misclassification review.
+
+- [ ] **Task 13 - 31 — Upcoming**
 
 ---
 
@@ -210,6 +214,9 @@ This combination makes the repository more representative of my actual learning 
 
 - `tugas11_ml_clustering.ipynb`
   Notebook-based Infinite Learning assignment for Task 11 Unsupervised Learning, focused on mall customer clustering using KMeans, DBSCAN, and Agglomerative Clustering with visual, metric-based, and business-context comparisons.
+
+- `tugas12_ml_fashion_mnist.ipynb`
+  Notebook-based Infinite Learning assignment for Task 12 Deep Learning, focused on Fashion MNIST image classification using TensorFlow/Keras with beginner-oriented concept notes, MLP tuning, CNN comparison, and error analysis.
 
 - `ringkasan_tugas6.txt`
   Output or supporting text file related to Task 6.
@@ -303,12 +310,14 @@ The Relational Databases certification track uses GitHub Codespaces and CodeRoad
 - **Task 9 Machine Learning notebook:** [Open in Google Colab](https://colab.research.google.com/drive/16hnLQ6_7Z8DBnzvTckdAUvwyIku-rd9t?usp=sharing)
 - **Task 10 Machine Learning notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1ktOMQH6Qr0D6mbyAcRyxu3IrNuub9fqS?usp=sharing)
 - **Task 11 Machine Learning notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1KAb4px6nzZZ_VcfxeDYV0ykrZ5saT4oK?usp=sharing)
-- The repository keeps notebook files for Tasks 7 through 11 for documentation and versioning purposes.
+- **Task 12 Deep Learning notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1zEhCPN3qyBgBDGec3ETY9ig5PSZURlhO?usp=sharing)
+- The repository keeps notebook files for Tasks 7 through 12 for documentation and versioning purposes.
 - The current Task 7 notebook is best reviewed through Google Colab because it depends on an external dataset file, `worldometer_data.csv`, which is intentionally not stored in this repository to keep the repository lighter.
 - Task 8 follows a similar notebook-first workflow and depends on an external dataset file, `Housing.csv`, originally referenced from the [Housing Prices Dataset on Kaggle](https://www.kaggle.com/datasets/yasserh/housing-prices-dataset). The notebook is currently structured for a Colab-style file path (`/content/Housing.csv`).
 - Task 9 depends on the Energy Consumption dataset referenced in the assignment notebook and may generate a local `joblib` model artifact when executed. The related CSV files and generated model binary are intentionally not versioned.
 - Task 10 uses the built-in Iris dataset from `scikit-learn`, so it can run locally without a separate dataset download.
 - Task 11 loads the Mall Customers dataset from the GitHub Gist referenced in the assignment notebook, so local execution requires internet access or a manually downloaded copy with a path adjustment.
+- Task 12 uses the built-in Fashion MNIST loader from `tensorflow.keras.datasets`, so a fresh local run requires TensorFlow and internet access for the first dataset download unless the dataset is already cached.
 - A fresh local clone of this repository does **not** include those external datasets by default, so running the notebooks locally requires downloading the required dataset separately and adjusting the notebook file path as needed.
 - Future notebook-heavy coursework may also continue to use a Colab-first workflow when the course provides external templates, datasets, or hosted notebook references.
 
