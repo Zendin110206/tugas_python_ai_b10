@@ -6,10 +6,10 @@
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Conda](https://img.shields.io/badge/conda-environment-green)
 ![Course](https://img.shields.io/badge/course-AI%20Development-orange)
-![Progress](https://img.shields.io/badge/tasks-6%2F31-informational)
+![Progress](https://img.shields.io/badge/tasks-11%2F31-informational)
 
 Structured Python assignment repository for Infinite Learning Batch 10.  
-This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, feature engineering, and notebook-based data science workflows.
+This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, feature engineering, supervised learning, unsupervised learning, and notebook-based data science workflows.
 
 </div>
 
@@ -64,6 +64,9 @@ This combination makes the repository more representative of my actual learning 
 ├── tugas6.py
 ├── tugas7_eda.ipynb
 ├── tugas8_data_science.ipynb
+├── tugas9_ml_linear_regression.ipynb
+├── tugas10_ml_decision_tree.ipynb
+├── tugas11_ml_clustering.ipynb
 ├── ringkasan_tugas6.txt
 ├── assets/
 │   ├── certificates/
@@ -112,7 +115,16 @@ This combination makes the repository more representative of my actual learning 
 - [x] **Task 8 — Mini Project: Data Science Practice**
   Covers notebook-based analysis of the Housing Prices Dataset, including structural inspection, missing-value and duplicate validation, reusable cleaning logic, categorical encoding, univariate and bivariate EDA, premium-feature price comparisons, multivariate interaction analysis, correlation mapping, and feature engineering through variables such as `amenities_score`, `total_rooms`, `area_per_bedroom`, and `size_category`. The notebook concludes with modeling-oriented recommendations by identifying which housing attributes carry the strongest predictive signal for price estimation.
 
-- [ ] **Task 9 - 31 — Upcoming**
+- [x] **Task 9 — Supervised Learning: Linear Regression**
+  Covers notebook-based regression modeling for building energy consumption, including dataset inspection, preprocessing with numeric and categorical pipelines, exploratory analysis, baseline comparison, linear regression, Ridge regression comparison, validation/test evaluation, model persistence with `joblib`, and manual prediction examples. The generated model artifact and external CSV files are intentionally not stored in this repository.
+
+- [x] **Task 10 — Supervised Learning: Iris Decision Tree Classification**
+  Covers Iris flower classification using a Decision Tree model, including feature understanding, exploratory visualization, train/test splitting, model training, confusion-matrix analysis, overfitting discussion, tree visualization, decision-rule interpretation, feature importance, and manual prediction trials. The starter notebook flow is preserved, with additional analysis added in separate cells.
+
+- [x] **Task 11 — Unsupervised Learning: Mall Customers Clustering**
+  Covers customer segmentation using KMeans, DBSCAN, and Agglomerative Clustering, including feature scaling, clustering interpretation, silhouette-score discussion, cluster profiling, KMeans elbow and silhouette checks, DBSCAN parameter exploration, 2D and 3D visual comparison, and business-context analysis for choosing a useful number of customer segments.
+
+- [ ] **Task 12 - 31 — Upcoming**
 
 ---
 
@@ -189,6 +201,15 @@ This combination makes the repository more representative of my actual learning 
 
 - `tugas8_data_science.ipynb`
   Notebook-based Infinite Learning assignment for Task 8 Data Science Practice, containing structured EDA, feature transformation, price-driver analysis, and feature engineering insights on the housing dataset.
+
+- `tugas9_ml_linear_regression.ipynb`
+  Notebook-based Infinite Learning assignment for Task 9 Supervised Learning, focused on linear regression for energy consumption prediction. The notebook documents the workflow and evaluation, while the external dataset files and generated model binary are kept out of version control.
+
+- `tugas10_ml_decision_tree.ipynb`
+  Notebook-based Infinite Learning assignment for Task 10 Supervised Learning, focused on Iris classification with a Decision Tree while preserving the starter notebook structure and adding explanatory analysis.
+
+- `tugas11_ml_clustering.ipynb`
+  Notebook-based Infinite Learning assignment for Task 11 Unsupervised Learning, focused on mall customer clustering using KMeans, DBSCAN, and Agglomerative Clustering with visual, metric-based, and business-context comparisons.
 
 - `ringkasan_tugas6.txt`
   Output or supporting text file related to Task 6.
@@ -279,11 +300,17 @@ The Relational Databases certification track uses GitHub Codespaces and CodeRoad
 
 - **Task 7 EDA notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1wtv8ZXdOkMeRhzEmK7W9CZ2DpTFmRc-o?usp=sharing)
 - **Task 8 Data Science notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1Fr2T_d19bS6ozuaN1vgcLmvZFYOXf6lO?usp=sharing)
-- The repository keeps the Task 7 notebook file as `tugas7_eda.ipynb` and the Task 8 notebook file as `tugas8_data_science.ipynb` for documentation and versioning purposes.
+- **Task 9 Machine Learning notebook:** [Open in Google Colab](https://colab.research.google.com/drive/16hnLQ6_7Z8DBnzvTckdAUvwyIku-rd9t?usp=sharing)
+- **Task 10 Machine Learning notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1ktOMQH6Qr0D6mbyAcRyxu3IrNuub9fqS?usp=sharing)
+- **Task 11 Machine Learning notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1KAb4px6nzZZ_VcfxeDYV0ykrZ5saT4oK?usp=sharing)
+- The repository keeps notebook files for Tasks 7 through 11 for documentation and versioning purposes.
 - The current Task 7 notebook is best reviewed through Google Colab because it depends on an external dataset file, `worldometer_data.csv`, which is intentionally not stored in this repository to keep the repository lighter.
 - Task 8 follows a similar notebook-first workflow and depends on an external dataset file, `Housing.csv`, originally referenced from the [Housing Prices Dataset on Kaggle](https://www.kaggle.com/datasets/yasserh/housing-prices-dataset). The notebook is currently structured for a Colab-style file path (`/content/Housing.csv`).
+- Task 9 depends on the Energy Consumption dataset referenced in the assignment notebook and may generate a local `joblib` model artifact when executed. The related CSV files and generated model binary are intentionally not versioned.
+- Task 10 uses the built-in Iris dataset from `scikit-learn`, so it can run locally without a separate dataset download.
+- Task 11 loads the Mall Customers dataset from the GitHub Gist referenced in the assignment notebook, so local execution requires internet access or a manually downloaded copy with a path adjustment.
 - A fresh local clone of this repository does **not** include those external datasets by default, so running the notebooks locally requires downloading the required dataset separately and adjusting the notebook file path as needed.
-- Upcoming notebook-heavy coursework, especially Tasks 9 through 12, may also continue to use a Colab-first workflow when the course provides external templates, datasets, or hosted notebook references.
+- Future notebook-heavy coursework may also continue to use a Colab-first workflow when the course provides external templates, datasets, or hosted notebook references.
 
 ---
 
