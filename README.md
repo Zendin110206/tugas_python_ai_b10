@@ -170,7 +170,7 @@ This combination makes the repository more representative of my actual learning 
   Covers command-line navigation, file inspection, file and directory creation, command flags, destructive-command safety, and the cleaned Build a Boilerplate workshop flow.
 
 - **SQL and PostgreSQL**
-  Reserved for SQL/PostgreSQL notes and project documentation, starting with the Celestial Bodies Database certification project when meaningful work is available.
+  Covers PostgreSQL and relational database fundamentals through review notes and cleaned workshop documentation, including database creation, table design, constraints, keys, relationship modeling, junction tables, and join queries.
 
 ### HackerRank Practice
 
@@ -190,7 +190,7 @@ This combination makes the repository more representative of my actual learning 
 
 - **freeCodeCamp Relational Databases Certification**
   - Status: in progress
-  - Current focus: Bash Fundamentals and command-line workflow
+  - Current focus: SQL, PostgreSQL, and relational database modeling
   - Repository policy: related files will be added only after project work or review materials are completed, so the repository remains evidence-based and easy to audit.
 
 ---
@@ -225,7 +225,7 @@ This combination makes the repository more representative of my actual learning 
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `FreeCodeCamp Certifications Relational Databases/`
-  Cleaned notes, command summaries, and future project documentation for the freeCodeCamp Relational Databases Certification track.
+  Cleaned notes, command summaries, and workshop documentation for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals and SQL/PostgreSQL practice.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
