@@ -265,3 +265,13 @@ src/main/resources/dist/*
 
 # FCC study exports
 FreeCodeCamp Certifications Python/*/* Review.pdf
+
+# Notebook datasets and generated model artifacts
+*.joblib
+*.pkl
+*.pickle
+train_energy_data.csv
+test_energy_data.csv
+worldometer_data.csv
+Housing.csv
+Mall_Customers.csv
