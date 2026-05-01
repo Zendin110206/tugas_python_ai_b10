@@ -86,6 +86,7 @@ This combination makes the repository more representative of my actual learning 
 │   └── Certification Projects/
 ├── FreeCodeCamp Certifications Relational Databases/
 │   ├── Bash Fundamentals/
+│   ├── Bash Scripting/
 │   ├── SQL and PostgreSQL/
 │   └── Certification Projects/
 └── HackerRank/
@@ -170,6 +171,9 @@ This combination makes the repository more representative of my actual learning 
 - **Bash Fundamentals**
   Covers command-line navigation, file inspection, file and directory creation, command flags, destructive-command safety, and the cleaned Build a Boilerplate workshop flow.
 
+- **Bash Scripting**
+  Covers executable Bash scripts, script arguments, conditionals, loops, arrays, functions, random values, input validation, and the cleaned Build Five Programs workshop flow.
+
 - **SQL and PostgreSQL**
   Covers PostgreSQL and relational database fundamentals through review notes and cleaned workshop documentation, including database creation, table design, constraints, keys, relationship modeling, junction tables, and join queries.
 
@@ -194,7 +198,7 @@ This combination makes the repository more representative of my actual learning 
 
 - **freeCodeCamp Relational Databases Certification**
   - Status: in progress
-  - Current focus: SQL, PostgreSQL, relational database modeling, and certification project work
+  - Current focus: Bash scripting, SQL, PostgreSQL, relational database modeling, and certification project work
   - Repository policy: related files will be added only after project work or review materials are completed, so the repository remains evidence-based and easy to audit.
 
 ---
@@ -229,7 +233,7 @@ This combination makes the repository more representative of my actual learning 
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `FreeCodeCamp Certifications Relational Databases/`
-  Cleaned notes, command summaries, workshop documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, SQL/PostgreSQL practice, and the Celestial Bodies Database project.
+  Cleaned notes, command summaries, workshop documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, SQL/PostgreSQL practice, and the Celestial Bodies Database project.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
