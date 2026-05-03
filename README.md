@@ -85,6 +85,7 @@ This combination makes the repository more representative of my actual learning 
 │   ├── Object Oriented Program (OOP)/
 │   └── Certification Projects/
 ├── FreeCodeCamp Certifications Relational Databases/
+│   ├── Cheatsheets/
 │   ├── Bash Fundamentals/
 │   ├── Bash Scripting/
 │   ├── SQL and Bash/
@@ -169,6 +170,9 @@ This combination makes the repository more representative of my actual learning 
 
 ### freeCodeCamp Relational Databases Practice
 
+- **Cheatsheets**
+  Stores quick lookup tables for Bash, PostgreSQL, and SQL syntax learned across the Relational Databases track. These files are designed for fast syntax recall, while the workshop folders keep the longer learning notes.
+
 - **Bash Fundamentals**
   Covers command-line navigation, file inspection, file and directory creation, command flags, destructive-command safety, and the cleaned Build a Boilerplate workshop flow.
 
@@ -176,7 +180,7 @@ This combination makes the repository more representative of my actual learning 
   Covers executable Bash scripts, script arguments, conditionals, loops, arrays, functions, random values, input validation, and the cleaned Build Five Programs workshop flow.
 
 - **SQL and Bash**
-  Covers combined Bash and PostgreSQL workflows, including CSV parsing, scripted `psql` execution, relational import automation, junction-table population, null handling, and database export through the cleaned Build a Student Database: Part 1 workshop flow.
+  Covers combined Bash and PostgreSQL workflows, including CSV parsing, scripted `psql` execution, relational import automation, junction-table population, null handling, SQL query reporting, aggregate queries, joins, and database export through the cleaned Build a Student Database workshop flow.
 
 - **SQL and PostgreSQL**
   Covers PostgreSQL and relational database fundamentals through review notes and cleaned workshop documentation, including database creation, table design, constraints, keys, relationship modeling, junction tables, and join queries.
@@ -202,7 +206,7 @@ This combination makes the repository more representative of my actual learning 
 
 - **freeCodeCamp Relational Databases Certification**
   - Status: in progress
-  - Current focus: Bash scripting, SQL+Bash automation, PostgreSQL, relational database modeling, and certification project work
+  - Current focus: Bash scripting, SQL+Bash automation, PostgreSQL querying, relational database modeling, and certification project work
   - Repository policy: related files will be added only after project work or review materials are completed, so the repository remains evidence-based and easy to audit.
 
 ---
@@ -237,7 +241,7 @@ This combination makes the repository more representative of my actual learning 
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `FreeCodeCamp Certifications Relational Databases/`
-  Cleaned notes, command summaries, workshop documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, SQL+Bash import automation, SQL/PostgreSQL practice, and the Celestial Bodies Database project.
+  Cleaned notes, command summaries, quick syntax cheatsheets, workshop documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, SQL+Bash import and query automation, SQL/PostgreSQL practice, and the Celestial Bodies Database project.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
