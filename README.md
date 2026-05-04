@@ -1,15 +1,15 @@
 <div align="center">
 
-# Python Assignments — Infinite Learning Batch 10
+# AI Development Assignments and Learning Portfolio - Infinite Learning Batch 10
 
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Conda](https://img.shields.io/badge/conda-environment-green)
 ![Course](https://img.shields.io/badge/course-AI%20Development-orange)
-![Progress](https://img.shields.io/badge/tasks-12%2F31-informational)
+![Progress](https://img.shields.io/badge/tasks-13%2F31-informational)
 
-Structured Python assignment repository for Infinite Learning Batch 10.  
-This repository documents my progress from Python fundamentals toward more applied topics such as data structures, object-oriented programming, exploratory data analysis, feature engineering, supervised learning, unsupervised learning, deep learning fundamentals, and notebook-based data science workflows.
+Structured repository for Infinite Learning Batch 10 assignments, supported by selected Python practice, machine learning notebooks, and certification study records.
+It documents the official assignment track first, while also preserving related practice that reinforces Python, data analysis, machine learning, SQL, Bash, and relational database workflows.
 
 </div>
 
@@ -17,17 +17,17 @@ This repository documents my progress from Python fundamentals toward more appli
 
 ## Overview
 
-This repository contains my Python assignments for the **AI Development** program at **Infinite Learning Batch 10**.  
-The main purpose of this repository remains the official assignment track from the program, which documents my progress from Python fundamentals toward more applied topics.
+This repository contains my official assignments for the **AI Development** program at **Infinite Learning Batch 10**.
+The main purpose of this repository remains the formal assignment track from the program, supported by carefully selected independent practice.
 
 In addition to the coursework, I also include selected practice from **FreeCodeCamp** and **HackerRank**. These materials are intentionally kept in the same repository as supporting evidence of continuous learning, concept reinforcement, and hands-on problem solving beyond mandatory submissions.
 
 As a result, this repository serves two related purposes:
 
 - Primary archive for Infinite Learning assignments
-- Structured record of independent Python practice and review
+- Structured record of independent Python, SQL, Bash, and relational database practice
 
-This approach helps present a clearer picture of how I study, apply, and revisit Python concepts over time.
+This approach helps present a clearer picture of how I study, apply, and revisit programming and data-related concepts over time.
 
 The progress indicator at the top of this README refers to the official Infinite Learning assignment track only.
 
@@ -37,13 +37,13 @@ The progress indicator at the top of this README refers to the official Infinite
 
 ### Primary Track: Infinite Learning
 
-The central part of this repository is the assignment work completed as part of the **AI Development program at Infinite Learning Batch 10**.  
+The central part of this repository is the assignment work completed as part of the **AI Development program at Infinite Learning Batch 10**.
 These files represent formal coursework and remain the main context of the repository.
-The track now includes both script-based Python assignments and notebook-based data analysis work.
+The track now includes script-based Python assignments, notebook-based data analysis work, and selected LMS-based submissions that do not always produce local source files.
 
 ### Supplementary Track: FreeCodeCamp and HackerRank
 
-The **FreeCodeCamp** and **HackerRank** folders are included as complementary study material.  
+The **FreeCodeCamp** and **HackerRank** folders are included as complementary study material.
 They show how I strengthen core Python concepts through extra exercises, review notes, small projects, debugging practice, and problem-solving drills outside the required assignment flow.
 
 The freeCodeCamp Relational Databases track is documented separately because it uses GitHub Codespaces and CodeRoad for many workshops and projects. This repository keeps cleaned notes, command summaries, and project documentation rather than raw Codespaces workspace output.
@@ -72,7 +72,6 @@ This combination makes the repository more representative of my actual learning 
 ├── assets/
 │   ├── certificates/
 │   └── screenshots/
-├── docs/
 ├── FreeCodeCamp Certifications Python/
 │   ├── Python_Review.md
 │   ├── Python Basics/
@@ -101,6 +100,12 @@ This combination makes the repository more representative of my actual learning 
 ## Current Coverage
 
 ### Infinite Learning Assignments
+
+- [x] **Task 1 — AI Summary Submission**
+  Completed through the official LMS/Docs workflow. This task focused on summarizing introductory AI material and does not add a local source-code artifact to the repository.
+
+- [x] **Task 2 — AI Reflection Submission**
+  Completed through the official LMS/Docs workflow. This task focused on personal opinion and reflection about AI concepts and does not add a local source-code artifact to the repository.
 
 - [x] **Task 3 — Python Basics**
   Covers variables, data types, string manipulation, mathematical operations, list operations, and user input.
@@ -132,7 +137,10 @@ This combination makes the repository more representative of my actual learning 
 - [x] **Task 12 — Deep Learning: Fashion MNIST Image Classification**
   Covers beginner-focused image classification using TensorFlow/Keras, including Fashion MNIST data understanding, pixel normalization, MLP baseline modeling, controlled MLP hyperparameter tuning, CNN comparison, learning-curve analysis, classification reports, confusion matrices, and misclassification review.
 
-- [ ] **Task 13 - 31 — Upcoming**
+- [x] **Task 13 — Deep Learning Quiz**
+  Completed through the official Google Form quiz workflow with 50 deep learning questions. This task is tracked in the progress indicator even though it does not add a local source-code artifact to the repository.
+
+- [ ] **Task 14 - 31 — Upcoming**
 
 ---
 
@@ -252,9 +260,6 @@ This combination makes the repository more representative of my actual learning 
 - `assets/certificates/`
   Stores certificate images as supporting archival evidence. Official credential links remain the primary verification source in this README.
 
-- `docs/`
-  Reserved for additional project documentation.
-
 - `environment.yml`
   Conda environment definition for reproducible local setup across script, notebook, data science, machine learning, and TensorFlow/Keras-based assignments.
 
@@ -334,6 +339,7 @@ The Relational Databases certification track uses GitHub Codespaces and CodeRoad
 - Task 10 uses the built-in Iris dataset from `scikit-learn`, so it can run locally without a separate dataset download.
 - Task 11 loads the Mall Customers dataset from the GitHub Gist referenced in the assignment notebook, so local execution requires internet access or a manually downloaded copy with a path adjustment.
 - Task 12 uses the built-in Fashion MNIST loader from `tensorflow.keras.datasets`, so a fresh local run requires TensorFlow and internet access for the first dataset download unless the dataset is already cached.
+- Tasks 1, 2, and 13 were completed through official LMS/Docs/Form workflows and do not require local script or notebook files in this repository.
 - A fresh local clone of this repository does **not** include those external datasets by default, so running the notebooks locally requires downloading the required dataset separately and adjusting the notebook file path as needed.
 - Future notebook-heavy coursework may also continue to use a Colab-first workflow when the course provides external templates, datasets, or hosted notebook references.
 
@@ -354,10 +360,10 @@ Through this repository, I aim to:
 
 ## Notes
 
-This repository is part of my ongoing learning journey in programming and AI development.  
+This repository is part of my ongoing study in programming and AI development.
 While the primary focus is still the official **Infinite Learning Batch 10** assignment path, the inclusion of **FreeCodeCamp** and **HackerRank** work is deliberate.
 
-These additional folders show that I do not rely only on mandatory coursework. I also spend time reinforcing concepts independently through guided practice, review material, debugging exercises, and small coding projects.
+These additional folders show consistent self-directed practice through guided exercises, review material, debugging tasks, and small coding projects.
 
 Some notebook-based assignments also depend on external datasets and are therefore referenced through Google Colab links when that provides a cleaner and lighter repository structure.
 
