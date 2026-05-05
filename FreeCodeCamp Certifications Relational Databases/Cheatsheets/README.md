@@ -12,8 +12,8 @@ or import pattern.
 
 | File | Focus | Best used when |
 | --- | --- | --- |
-| `Bash_Cheatsheet.md` | Bash terminal, scripting, streams, and text-processing syntax. | Writing shell scripts, loops, conditions, input handling, redirection, pipes, `grep`, `sed`, `diff`, CSV parsing, and `psql` automation. |
-| `PostgreSQL_SQL_Cheatsheet.md` | PostgreSQL and SQL syntax. | Creating databases, designing tables, querying rows, filtering with `WHERE`, grouping, joining tables, and exporting dumps. |
+| `Bash_Cheatsheet.md` | Bash terminal, scripting, streams, text processing, and menu automation syntax. | Writing shell scripts, loops, conditions, input handling, redirection, pipes, `grep`, `sed`, `diff`, CSV parsing, `psql` automation, and interactive terminal menus. |
+| `PostgreSQL_SQL_Cheatsheet.md` | PostgreSQL and SQL syntax. | Creating databases, designing tables, querying rows, filtering with `WHERE`, grouping, joining tables, updating state, and exporting dumps. |
 
 ## Scope Policy
 

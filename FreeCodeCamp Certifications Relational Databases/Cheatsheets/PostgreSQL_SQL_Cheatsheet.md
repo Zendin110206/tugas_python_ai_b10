@@ -63,6 +63,18 @@ queries, filters, joins, or database dumps.
 | `BOOLEAN` | True or false. | `has_life BOOLEAN` | Yes/no facts. |
 | `DATE` | Date value. | `'1990-04-13'` | Dates. |
 
+## Boolean and Date Patterns
+
+| Goal | Syntax | Example | Notes |
+| --- | --- | --- | --- |
+| Required boolean with default | `column BOOLEAN NOT NULL DEFAULT true` | `available BOOLEAN NOT NULL DEFAULT true` | Useful for availability state. |
+| Filter true values | `WHERE column = true` | `WHERE available = true` | Finds active/available rows. |
+| Set boolean false | `UPDATE table SET column = false WHERE condition;` | `UPDATE bikes SET available = false WHERE bike_id = 1;` | Used when a bike is rented. |
+| Set boolean true | `UPDATE table SET column = true WHERE condition;` | `UPDATE bikes SET available = true WHERE bike_id = 1;` | Used when a bike is returned. |
+| Required date with current date | `column DATE NOT NULL DEFAULT NOW()` | `date_rented DATE NOT NULL DEFAULT NOW()` | Stores date automatically. |
+| Nullable completion date | `column DATE` | `date_returned DATE` | `NULL` can mean still active. |
+| Filter active rows | `WHERE date_column IS NULL` | `WHERE date_returned IS NULL` | Finds rentals that have not been returned. |
+
 ## Constraints and Keys
 
 | Goal | Syntax | Example | Notes |
@@ -94,6 +106,39 @@ queries, filters, joins, or database dumps.
 | Delete all rows carefully | `TRUNCATE table;` | `TRUNCATE courses;` | Faster full-table delete. |
 | Truncate related tables | `TRUNCATE table_1, table_2;` | `TRUNCATE students, majors, courses, majors_courses;` | Needed with foreign keys. |
 | Truncate and reset IDs | `TRUNCATE table RESTART IDENTITY;` | `TRUNCATE students RESTART IDENTITY;` | Resets serial sequence. |
+
+## Bike Rental Shop State Queries
+
+| Goal | Query Pattern |
+| --- | --- |
+| List available bikes | `SELECT bike_id, type, size FROM bikes WHERE available = true ORDER BY bike_id;` |
+| Check selected bike is available | `SELECT available FROM bikes WHERE bike_id = 1 AND available = true;` |
+| Find customer by phone | `SELECT customer_id FROM customers WHERE phone = '555-5555';` |
+| Insert customer | `INSERT INTO customers(name, phone) VALUES('Me', '555-5555');` |
+| Insert rental | `INSERT INTO rentals(customer_id, bike_id) VALUES(1, 1);` |
+| Mark bike unavailable | `UPDATE bikes SET available = false WHERE bike_id = 1;` |
+| Find active customer rentals | See join query below. |
+| Mark rental returned | `UPDATE rentals SET date_returned = NOW() WHERE rental_id = 1;` |
+| Mark bike available | `UPDATE bikes SET available = true WHERE bike_id = 1;` |
+
+Active rentals query:
+
+```sql
+SELECT bike_id, type, size
+FROM bikes
+INNER JOIN rentals USING(bike_id)
+INNER JOIN customers USING(customer_id)
+WHERE phone = '555-5555'
+  AND date_returned IS NULL
+ORDER BY bike_id;
+```
+
+Rental lifecycle:
+
+```text
+Rent bike   -> INSERT rentals row + UPDATE bikes.available = false
+Return bike -> UPDATE rentals.date_returned + UPDATE bikes.available = true
+```
 
 ## Basic SELECT
 

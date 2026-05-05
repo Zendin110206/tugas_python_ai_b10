@@ -110,8 +110,8 @@ on the right.
 | Goal | Syntax | Example |
 | --- | --- | --- |
 | Pipe output into another command | `command_1 \| command_2` | `echo text \| cat` |
-| Count piped lines | `command \| wc -l` | `grep -o "cat" file.txt \| wc -l` |
-| Transform piped text | `command \| sed "s/a/b/"` | `cat file.txt \| sed "s/cat/dog/"` |
+| Count piped lines | `command \| wc -l` | `grep -o 'cat' file.txt \| wc -l` |
+| Transform piped text | `command \| sed 's/a/b/'` | `cat file.txt \| sed 's/cat/dog/'` |
 
 Important behavior:
 
@@ -269,6 +269,28 @@ else
 fi
 ```
 
+## `case` Statements
+
+Use `case` when one input can route to several actions, such as a terminal menu.
+
+| Goal | Syntax | Example |
+| --- | --- | --- |
+| Start case block | `case $VARIABLE in` | `case $MAIN_MENU_SELECTION in` |
+| Match one value | `pattern) command ;;` | `1) RENT_MENU ;;` |
+| Match fallback | `*) command ;;` | `*) MAIN_MENU "Please enter a valid option." ;;` |
+| End case block | `esac` | `esac` |
+
+Menu pattern:
+
+```bash
+case $MAIN_MENU_SELECTION in
+  1) RENT_MENU ;;
+  2) RETURN_MENU ;;
+  3) EXIT ;;
+  *) MAIN_MENU "Please enter a valid option." ;;
+esac
+```
+
 ## Text Processing Commands
 
 | Goal | Syntax | Example | Notes |
@@ -278,39 +300,39 @@ fi
 | Count lines only | `wc -l file` | `wc -l kitty_ipsum_1.txt` | Use with `<` or a pipe for count-only output. |
 | Count words only | `wc -w file` | `wc -w kitty_ipsum_1.txt` | Useful for text reports. |
 | Count characters only | `wc -m file` | `wc -m kitty_ipsum_1.txt` | Counts characters, not bytes. |
-| Search matching lines | `grep "pattern" file` | `grep "meow" kitty_ipsum_1.txt` | Prints each matching line. |
-| Show match line numbers | `grep -n "pattern" file` | `grep -n "meow" kitty_ipsum_1.txt` | Prefixes each match with a line number. |
-| Highlight matches | `grep --color "pattern" file` | `grep --color "meow" kitty_ipsum_1.txt` | Helpful for manual inspection. |
-| Print only matched text | `grep -o "pattern" file` | `grep -o "meow[a-z]*" kitty_ipsum_1.txt` | One match per output line. |
-| Count matching lines | `grep -c "pattern" file` | `grep -c "meow" kitty_ipsum_1.txt` | Counts lines, not every occurrence. |
-| Replace first match per line | `sed "s/old/new/" file` | `sed "s/r/2/" name.txt` | Writes transformed text to `stdout`. |
-| Replace all matches per line | `sed "s/old/new/g" file` | `sed "s/cat/dog/g" file.txt` | `g` means global. |
-| Use extended regex in `sed` | `sed -E "s/pattern/new/" file` | See below | Enables `+`, capture groups, and alternation. |
+| Search matching lines | `grep 'pattern' file` | `grep 'meow' kitty_ipsum_1.txt` | Prints each matching line. |
+| Show match line numbers | `grep -n 'pattern' file` | `grep -n 'meow' kitty_ipsum_1.txt` | Prefixes each match with a line number. |
+| Highlight matches | `grep --color 'pattern' file` | `grep --color 'meow' kitty_ipsum_1.txt` | Helpful for manual inspection. |
+| Print only matched text | `grep -o 'pattern' file` | `grep -o 'meow[a-z]*' kitty_ipsum_1.txt` | One match per output line. |
+| Count matching lines | `grep -c 'pattern' file` | `grep -c 'meow' kitty_ipsum_1.txt` | Counts lines, not every occurrence. |
+| Replace first match per line | `sed 's/old/new/' file` | `sed 's/r/2/' name.txt` | Writes transformed text to `stdout`. |
+| Replace all matches per line | `sed 's/old/new/g' file` | `sed 's/cat/dog/g' file.txt` | `g` means global. |
+| Use extended regex in `sed` | `sed -E 's/pattern/new/' file` | See below | Enables `+`, capture groups, and alternation. |
 | Compare two files | `diff file_1 file_2` | `diff kitty.txt doggy.txt` | Shows changed lines. |
 | Compare two files with color | `diff --color file_1 file_2` | `diff --color kitty.txt doggy.txt` | Easier to inspect in terminal. |
 
 Count total matches instead of matching lines:
 
 ```bash
-grep -o "meow[a-z]*" kitty_ipsum_1.txt | wc -l
+grep -o 'meow[a-z]*' kitty_ipsum_1.txt | wc -l
 ```
 
 Extract only line numbers from `grep -n` output:
 
 ```bash
-grep -n "meow[a-z]*" kitty_ipsum_1.txt | sed -E "s/([0-9]+).*/\1/"
+grep -n 'meow[a-z]*' kitty_ipsum_1.txt | sed -E 's/([0-9]+).*/\1/'
 ```
 
 Use multiple `sed` replacements in one command:
 
 ```bash
-sed -E "s/catnip/dogchow/g; s/cat/dog/g; s/meow|meowzer/woof/g"
+sed -E 's/catnip/dogchow/g; s/cat/dog/g; s/meow|meowzer/woof/g'
 ```
 
 Translator script pattern:
 
 ```bash
-cat $1 | sed -E "s/catnip/dogchow/g; s/cat/dog/g; s/meow|meowzer/woof/g"
+cat $1 | sed -E 's/catnip/dogchow/g; s/cat/dog/g; s/meow|meowzer/woof/g'
 ```
 
 ## Loops
@@ -385,6 +407,32 @@ GET_FORTUNE() {
 }
 ```
 
+## Interactive Menu Functions
+
+Use functions to keep a terminal program readable. Each menu should own one
+responsibility, then return to the main menu when the action is finished or
+invalid input is entered.
+
+| Goal | Syntax | Example |
+| --- | --- | --- |
+| Define menu | `MENU_NAME() { ... }` | `MAIN_MENU() { ... }` |
+| Pass message into menu | `MENU_NAME "message"` | `MAIN_MENU "That bike is not available."` |
+| Read menu option | `read VARIABLE` | `read MAIN_MENU_SELECTION` |
+| Route option | `case $VARIABLE in ... esac` | `case $MAIN_MENU_SELECTION in ... esac` |
+
+Optional message pattern:
+
+```bash
+MAIN_MENU() {
+  if [[ $1 ]]
+  then
+    echo -e "\n$1"
+  fi
+
+  echo "How may I help you?"
+}
+```
+
 ## CSV Reading
 
 | Goal | Syntax | Example | Notes |
@@ -429,6 +477,48 @@ Flag meaning:
 | `--no-align` | Remove aligned output formatting. |
 | `--tuples-only` | Print data only, without headers or footers. |
 | `-c` | Run one SQL command and exit. |
+
+When `--tuples-only` is used without `--no-align`, PostgreSQL can still keep
+aligned spaces around values. This happens in the Bike Rental Shop workshop.
+Use `while read ...` and `sed` when the output needs to be displayed or trimmed.
+
+## Processing PostgreSQL Output in Bash
+
+| Goal | Pattern | Example |
+| --- | --- | --- |
+| Display rows from `psql` output | `echo "$ROWS" \| while read A B C; do ...; done` | See bike example below. |
+| Convert `28 \| Mountain` into `28" Mountain` | `sed` substitution | See code block below. |
+| Remove one trailing space | `sed 's/ $//g'` | `echo 'M e ' \| sed 's/ $//g'` |
+| Remove all trailing spaces | `sed 's/ *$//g'` | `echo 'M e   ' \| sed 's/ *$//g'` |
+| Remove all leading spaces | `sed 's/^ *//g'` | `echo '   M e' \| sed 's/^ *//g'` |
+| Remove leading or trailing spaces | `sed -E` with an OR pattern | See code block below. |
+
+Format bike info for the final rental message:
+
+```bash
+echo "$BIKE_INFO" | sed 's/ |/"/'
+```
+
+Bike row display pattern:
+
+```bash
+echo "$AVAILABLE_BIKES" | while read BIKE_ID BAR TYPE BAR SIZE
+do
+  echo "$BIKE_ID) $SIZE\" $TYPE Bike"
+done
+```
+
+Debug trailing spaces by printing a marker after the text:
+
+```bash
+echo "$(echo '   M e ')."
+echo "$(echo '   M e ' | sed 's/ $//g')."
+echo "$(echo '   M e   ' | sed -E 's/^ *| *$//g')."
+```
+
+Use `sed -E` for the final trim pattern because `|` is an OR operator there.
+Without extended regular expressions, the OR pattern is not interpreted the way
+the workshop needs.
 
 ## Lookup-Then-Insert Pattern
 
