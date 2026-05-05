@@ -28,6 +28,31 @@ readers, or scripts that call PostgreSQL with `psql`.
 | Print command result | `echo "$(command)"` | `echo "$(date)"` | Runs the command first. |
 | Print exit status | `echo $?` | `echo $?` | Shows previous command status. |
 
+## Standard Streams and Redirection
+
+| Goal | Syntax | Example | Notes |
+| --- | --- | --- | --- |
+| Redirect standard output and overwrite | `command > file` | `echo hello > stdout.txt` | Creates or replaces the file. |
+| Redirect standard output and append | `command >> file` | `echo hello >> stdout.txt` | Adds output to the end. |
+| Explicitly redirect standard output | `command 1> file` | `echo hello 1> stdout.txt` | Same stream as `>`. |
+| Redirect standard error | `command 2> file` | `bad_command 2> stderr.txt` | Captures error output. |
+| Redirect standard input from a file | `command < file` | `read NAME < name.txt` | Reads input from the file instead of the keyboard. |
+| Empty a file | `> file` | `> stdout.txt` | Overwrites the file with no content. |
+
+Stream numbers:
+
+| Stream | Number | Meaning |
+| --- | ---: | --- |
+| `stdin` | `0` | Input stream. |
+| `stdout` | `1` | Successful output stream. |
+| `stderr` | `2` | Error output stream. |
+
+Capture output and errors separately:
+
+```bash
+./script.sh < name.txt 1> stdout.txt 2> stderr.txt
+```
+
 ## Comments
 
 | Goal | Syntax | Example | Notes |
@@ -75,6 +100,32 @@ Example:
 echo "What's your name?"
 read -r NAME
 echo "Hello $NAME."
+```
+
+## Pipes and Subshells
+
+A pipe sends `stdout` from the command on the left into `stdin` of the command
+on the right.
+
+| Goal | Syntax | Example |
+| --- | --- | --- |
+| Pipe output into another command | `command_1 \| command_2` | `echo text \| cat` |
+| Count piped lines | `command \| wc -l` | `grep -o "cat" file.txt \| wc -l` |
+| Transform piped text | `command \| sed "s/a/b/"` | `cat file.txt \| sed "s/cat/dog/"` |
+
+Important behavior:
+
+```bash
+echo Alice | read NAME
+echo "$NAME"
+```
+
+The variable may not remain available because `read` runs in a subshell in this
+pipeline pattern. Use input redirection when the variable must stay in the
+current shell:
+
+```bash
+read NAME < name.txt
 ```
 
 ## Script Arguments
@@ -216,6 +267,50 @@ then
 else
   echo "O:$NUMBER"
 fi
+```
+
+## Text Processing Commands
+
+| Goal | Syntax | Example | Notes |
+| --- | --- | --- | --- |
+| Print a file | `cat file` | `cat kitty_ipsum_1.txt` | Sends file content to `stdout`. |
+| Count lines, words, and bytes | `wc file` | `wc kitty_ipsum_1.txt` | Prints all three counts and the filename. |
+| Count lines only | `wc -l file` | `wc -l kitty_ipsum_1.txt` | Use with `<` or a pipe for count-only output. |
+| Count words only | `wc -w file` | `wc -w kitty_ipsum_1.txt` | Useful for text reports. |
+| Count characters only | `wc -m file` | `wc -m kitty_ipsum_1.txt` | Counts characters, not bytes. |
+| Search matching lines | `grep "pattern" file` | `grep "meow" kitty_ipsum_1.txt` | Prints each matching line. |
+| Show match line numbers | `grep -n "pattern" file` | `grep -n "meow" kitty_ipsum_1.txt` | Prefixes each match with a line number. |
+| Highlight matches | `grep --color "pattern" file` | `grep --color "meow" kitty_ipsum_1.txt` | Helpful for manual inspection. |
+| Print only matched text | `grep -o "pattern" file` | `grep -o "meow[a-z]*" kitty_ipsum_1.txt` | One match per output line. |
+| Count matching lines | `grep -c "pattern" file` | `grep -c "meow" kitty_ipsum_1.txt` | Counts lines, not every occurrence. |
+| Replace first match per line | `sed "s/old/new/" file` | `sed "s/r/2/" name.txt` | Writes transformed text to `stdout`. |
+| Replace all matches per line | `sed "s/old/new/g" file` | `sed "s/cat/dog/g" file.txt` | `g` means global. |
+| Use extended regex in `sed` | `sed -E "s/pattern/new/" file` | See below | Enables `+`, capture groups, and alternation. |
+| Compare two files | `diff file_1 file_2` | `diff kitty.txt doggy.txt` | Shows changed lines. |
+| Compare two files with color | `diff --color file_1 file_2` | `diff --color kitty.txt doggy.txt` | Easier to inspect in terminal. |
+
+Count total matches instead of matching lines:
+
+```bash
+grep -o "meow[a-z]*" kitty_ipsum_1.txt | wc -l
+```
+
+Extract only line numbers from `grep -n` output:
+
+```bash
+grep -n "meow[a-z]*" kitty_ipsum_1.txt | sed -E "s/([0-9]+).*/\1/"
+```
+
+Use multiple `sed` replacements in one command:
+
+```bash
+sed -E "s/catnip/dogchow/g; s/cat/dog/g; s/meow|meowzer/woof/g"
+```
+
+Translator script pattern:
+
+```bash
+cat $1 | sed -E "s/catnip/dogchow/g; s/cat/dog/g; s/meow|meowzer/woof/g"
 ```
 
 ## Loops
