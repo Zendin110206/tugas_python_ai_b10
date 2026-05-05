@@ -188,7 +188,7 @@ This combination makes the repository more representative of my actual learning 
   Covers executable Bash scripts, script arguments, conditionals, loops, arrays, functions, random values, input validation, and the cleaned Build Five Programs workshop flow.
 
 - **SQL and Bash**
-  Covers combined Bash and PostgreSQL workflows, including CSV parsing, scripted `psql` execution, relational import automation, junction-table population, null handling, SQL query reporting, aggregate queries, joins, database export, standard streams, redirection, pipes, `grep`, `sed`, `wc`, `diff`, and text-translation automation through cleaned workshop documentation.
+  Covers combined Bash and PostgreSQL workflows, including CSV parsing, scripted `psql` execution, relational import automation, junction-table population, null handling, SQL query reporting, aggregate queries, joins, database export, standard streams, redirection, pipes, `grep`, `sed`, `wc`, `diff`, text-translation automation, and interactive database-backed Bash programs such as the Bike Rental Shop workshop.
 
 - **SQL and PostgreSQL**
   Covers PostgreSQL and relational database fundamentals through review notes and cleaned workshop documentation, including database creation, table design, constraints, keys, relationship modeling, junction tables, and join queries.
@@ -249,7 +249,7 @@ This combination makes the repository more representative of my actual learning 
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `FreeCodeCamp Certifications Relational Databases/`
-  Cleaned notes, command summaries, quick syntax cheatsheets, workshop documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, SQL+Bash import, query, and text-processing automation, SQL/PostgreSQL practice, and the Celestial Bodies Database project.
+  Cleaned notes, command summaries, quick syntax cheatsheets, workshop documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, SQL+Bash import, query, text-processing automation, interactive database-backed Bash programs, SQL/PostgreSQL practice, and the Celestial Bodies Database project.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
