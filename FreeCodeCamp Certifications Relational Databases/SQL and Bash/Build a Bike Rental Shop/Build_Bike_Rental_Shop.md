@@ -1,0 +1,370 @@
+# Build a Bike Rental Shop
+
+## Context
+
+This document summarizes the **Build a Bike Rental Shop** workshop from the
+freeCodeCamp Relational Databases Certification track.
+
+The workshop was completed in **GitHub Codespaces** through the CodeRoad
+extension. The original lesson is interactive and step-based, so this repository
+keeps a cleaned learning record instead of a raw copy of the CodeRoad prompts.
+
+This workshop connects two skills that were practiced in earlier sections:
+
+- using PostgreSQL to store structured relational data
+- using Bash to build an interactive terminal program
+
+The final result is a small command-line bike rental application backed by a
+PostgreSQL database.
+
+## Workshop Goal
+
+Build a `bikes` database and an executable Bash program named `bike-shop.sh`
+that can:
+
+- show available bikes
+- rent a selected bike to a customer
+- create a new customer when the phone number is not found
+- mark rented bikes as unavailable
+- show a customer's active rentals
+- return a selected bike
+- mark returned bikes as available again
+
+The main learning focus is not only writing SQL or Bash separately. The key
+lesson is how a Bash script can call PostgreSQL, capture query output, validate
+user input, and use that result to decide the next step in an interactive
+program.
+
+## Environment
+
+- Platform: freeCodeCamp Relational Databases Certification
+- Workspace: GitHub Codespaces
+- Tutorial runner: CodeRoad
+- Shell: Bash
+- Database system: PostgreSQL
+- Database client: `psql`
+- Database user: `freecodecamp`
+- Database name: `bikes`
+
+## Final Files
+
+| File | Purpose |
+| --- | --- |
+| `bikes.sql` | PostgreSQL dump for the completed workshop database. |
+| `bike-shop.sh` | Interactive Bash program for renting and returning bikes. |
+| `Build_Bike_Rental_Shop.md` | Cleaned workshop documentation. |
+| `Bike_Rental_Shop_Reference.md` | Detailed syntax and implementation reference for this workshop. |
+
+## Database Design
+
+The database uses three tables:
+
+| Table | Purpose | Important Columns |
+| --- | --- | --- |
+| `bikes` | Stores the bike inventory. | `bike_id`, `type`, `size`, `available` |
+| `customers` | Stores customer identity by phone number. | `customer_id`, `phone`, `name` |
+| `rentals` | Stores rental history and active rentals. | `rental_id`, `customer_id`, `bike_id`, `date_rented`, `date_returned` |
+
+Relationship summary:
+
+- One customer can have many rental records.
+- One bike can appear in many rental records over time.
+- Each rental record connects one customer to one bike.
+- A rental is considered active when `date_returned IS NULL`.
+- A bike is available when `bikes.available = true`.
+
+The `rentals` table is the bridge between customers and bikes. It also stores
+time-based state through `date_rented` and `date_returned`, so rental history is
+preserved instead of being overwritten.
+
+## Step 1: Create the Database
+
+Log in to PostgreSQL from the terminal:
+
+```bash
+psql --username=freecodecamp --dbname=postgres
+```
+
+Create and connect to the workshop database:
+
+```sql
+CREATE DATABASE bikes;
+\c bikes
+```
+
+Use `\l` to confirm the database exists and `\d` to inspect tables as they are
+created.
+
+## Step 2: Create the Tables
+
+The inventory table stores each bike and whether it is currently available:
+
+```sql
+CREATE TABLE bikes();
+
+ALTER TABLE bikes ADD COLUMN bike_id SERIAL PRIMARY KEY;
+ALTER TABLE bikes ADD COLUMN type VARCHAR(50) NOT NULL;
+ALTER TABLE bikes ADD COLUMN size INT NOT NULL;
+ALTER TABLE bikes ADD COLUMN available BOOLEAN NOT NULL DEFAULT true;
+```
+
+The customers table stores a unique phone number for each customer:
+
+```sql
+CREATE TABLE customers();
+
+ALTER TABLE customers ADD COLUMN customer_id SERIAL PRIMARY KEY;
+ALTER TABLE customers ADD COLUMN phone VARCHAR(15) UNIQUE NOT NULL;
+ALTER TABLE customers ADD COLUMN name VARCHAR(40) NOT NULL;
+```
+
+The rentals table stores the relationship between a customer and a rented bike:
+
+```sql
+CREATE TABLE rentals();
+
+ALTER TABLE rentals ADD COLUMN rental_id SERIAL PRIMARY KEY;
+ALTER TABLE rentals ADD COLUMN customer_id INT NOT NULL;
+ALTER TABLE rentals ADD FOREIGN KEY(customer_id) REFERENCES customers(customer_id);
+ALTER TABLE rentals ADD COLUMN bike_id INT NOT NULL;
+ALTER TABLE rentals ADD FOREIGN KEY(bike_id) REFERENCES bikes(bike_id);
+ALTER TABLE rentals ADD COLUMN date_rented DATE NOT NULL DEFAULT NOW();
+ALTER TABLE rentals ADD COLUMN date_returned DATE;
+```
+
+The foreign keys protect data integrity. A rental cannot point to a customer or
+bike that does not exist.
+
+## Step 3: Add Inventory Data
+
+The workshop starts with nine bikes:
+
+```sql
+INSERT INTO bikes(type, size) VALUES('Mountain', 27);
+INSERT INTO bikes(type, size) VALUES('Mountain', 28);
+INSERT INTO bikes(type, size) VALUES('Mountain', 29);
+INSERT INTO bikes(type, size) VALUES('Road', 27);
+INSERT INTO bikes(type, size) VALUES('Road', 28), ('Road', 29);
+INSERT INTO bikes(type, size) VALUES('BMX', 19), ('BMX', 20), ('BMX', 21);
+```
+
+The `bike_id` value is generated by `SERIAL`, and the `available` value defaults
+to `true`.
+
+Verify the inventory:
+
+```sql
+SELECT * FROM bikes ORDER BY bike_id;
+```
+
+## Step 4: Create the Bash Program
+
+Create the executable script:
+
+```bash
+touch bike-shop.sh
+chmod +x bike-shop.sh
+```
+
+Start the script with a shebang:
+
+```bash
+#!/bin/bash
+```
+
+Add a reusable `psql` command:
+
+```bash
+PSQL="psql -X --username=freecodecamp --dbname=bikes --tuples-only -c"
+```
+
+This lets the script run queries with:
+
+```bash
+$($PSQL "SELECT ...")
+```
+
+Important detail: this workshop intentionally uses `--tuples-only` without
+`--no-align`. That removes headers and footers, but PostgreSQL may still keep
+aligned spacing around values. The script handles that output shape with
+`while read ...` and `sed` formatting.
+
+## Step 5: Build the Main Menu
+
+The script uses functions to separate each screen:
+
+| Function | Responsibility |
+| --- | --- |
+| `MAIN_MENU` | Shows the main options and routes the user. |
+| `RENT_MENU` | Handles bike rental flow. |
+| `RETURN_MENU` | Handles bike return flow. |
+| `EXIT` | Prints the exit message. |
+
+The main menu uses a `case` statement:
+
+```bash
+case $MAIN_MENU_SELECTION in
+  1) RENT_MENU ;;
+  2) RETURN_MENU ;;
+  3) EXIT ;;
+  *) MAIN_MENU "Please enter a valid option." ;;
+esac
+```
+
+This pattern keeps invalid menu choices inside the program instead of letting
+the script fail silently.
+
+## Step 6: Rent a Bike
+
+The rental flow is:
+
+1. Query available bikes.
+2. If none are available, return to the main menu with a message.
+3. Display each available bike in a readable format.
+4. Ask which bike the user wants to rent.
+5. Validate that the input is a positive integer.
+6. Confirm that the selected bike is still available.
+7. Ask for the customer's phone number.
+8. If the phone number is new, ask for the customer's name and insert a customer
+   row.
+9. Insert a rental row.
+10. Set the selected bike to unavailable.
+11. Print a confirmation message.
+
+Key availability query:
+
+```sql
+SELECT bike_id, type, size
+FROM bikes
+WHERE available = true
+ORDER BY bike_id;
+```
+
+Input validation pattern:
+
+```bash
+if [[ ! $BIKE_ID_TO_RENT =~ ^[0-9]+$ ]]
+then
+  MAIN_MENU "That is not a valid bike number."
+fi
+```
+
+The pattern `^[0-9]+$` means the whole input must be one or more digits.
+
+## Step 7: Format PostgreSQL Output
+
+PostgreSQL aligned output can include spaces around the pipe separator:
+
+```text
+ 28 | Mountain
+```
+
+The workshop uses `sed` to format it for a customer-facing message:
+
+```bash
+BIKE_INFO_FORMATTED=$(echo "$BIKE_INFO" | sed 's/ |/"/')
+```
+
+That turns:
+
+```text
+28 | Mountain
+```
+
+into:
+
+```text
+28" Mountain
+```
+
+The customer's name can also contain leading or trailing padding from `psql`.
+The script trims it before printing the final message:
+
+```bash
+echo "$CUSTOMER_NAME" | sed -E 's/^ *| *$//g'
+```
+
+The `-E` flag enables extended regular expressions, which makes the `|` OR
+operator work as expected.
+
+## Step 8: Return a Bike
+
+The return flow is:
+
+1. Ask for the customer's phone number.
+2. Find the customer by phone number.
+3. If the customer is missing, return to the main menu with a message.
+4. Query active rentals for that customer.
+5. If there are no active rentals, return to the main menu with a message.
+6. Display each rented bike.
+7. Ask which bike the customer wants to return.
+8. Validate that the input is a positive integer.
+9. Confirm that the selected bike is rented by that customer.
+10. Update the rental row with `date_returned = NOW()`.
+11. Set the bike back to available.
+12. Print a confirmation message.
+
+Active rental query:
+
+```sql
+SELECT bike_id, type, size
+FROM bikes
+INNER JOIN rentals USING(bike_id)
+INNER JOIN customers USING(customer_id)
+WHERE phone = '555-5555'
+  AND date_returned IS NULL
+ORDER BY bike_id;
+```
+
+Returning a bike requires two updates:
+
+```sql
+UPDATE rentals SET date_returned = NOW() WHERE rental_id = 1;
+UPDATE bikes SET available = true WHERE bike_id = 1;
+```
+
+This keeps the historical rental row while making the inventory item rentable
+again.
+
+## Step 9: Verify the Result
+
+Useful verification commands:
+
+```sql
+SELECT * FROM bikes ORDER BY bike_id;
+SELECT * FROM customers;
+SELECT * FROM rentals;
+```
+
+The final expected state after returning all test rentals is:
+
+- all bikes have `available = true`
+- customers remain stored for future rentals
+- rental rows remain in the history table
+- completed rentals have a non-null `date_returned`
+
+## Step 10: Export the Database
+
+The completed database can be saved as a SQL dump:
+
+```bash
+pg_dump --clean --create --inserts --username=freecodecamp bikes > bikes.sql
+```
+
+This dump is useful because it records the completed database schema, seed data,
+constraints, sequences, and inserted rental history.
+
+## Completion Notes
+
+This workshop is a practical example of a small stateful terminal application.
+The database stores durable state, while the Bash script provides the user
+interface and decision flow.
+
+The most important pattern is:
+
+```text
+User input -> Bash validation -> PostgreSQL query -> captured result -> next action
+```
+
+That pattern appears in many real command-line tools and small automation
+scripts, even when the final application becomes larger than this workshop.
