@@ -217,6 +217,30 @@ LIMIT row_count;
 | Reverse a condition | `WHERE NOT condition` | `WHERE NOT major='Game Design'` |
 | Group logic | `WHERE (condition_1 OR condition_2) AND condition_3` | `WHERE (major='Data Science' OR major='Web Development') AND gpa >= 3.0` |
 
+## Set Operations
+
+Use `UNION` when two `SELECT` queries return the same kind of value and should
+be combined into one result set.
+
+| Goal | Syntax | Example |
+| --- | --- | --- |
+| Combine unique rows | `SELECT column FROM table_a UNION SELECT column FROM table_b` | See example below. |
+| Combine rows and keep duplicates | `SELECT column FROM table_a UNION ALL SELECT column FROM table_b` | Use only when duplicates are meaningful. |
+| Filter by combined IDs | `WHERE id IN (SELECT ... UNION SELECT ...)` | See example below. |
+
+World Cup example:
+
+```sql
+SELECT name
+FROM teams
+WHERE team_id IN (
+  SELECT winner_id FROM games WHERE year = 2014 AND round = 'Eighth-Final'
+  UNION
+  SELECT opponent_id FROM games WHERE year = 2014 AND round = 'Eighth-Final'
+)
+ORDER BY name;
+```
+
 ## Aggregates and Grouping
 
 | Goal | Syntax | Example | Notes |

@@ -437,20 +437,32 @@ MAIN_MENU() {
 
 | Goal | Syntax | Example | Notes |
 | --- | --- | --- | --- |
-| Read comma-separated file | Use `cat`, pipe, `while`, `IFS`, and `read` together. | See code block below. | Kept outside the table so Markdown preview stays stable. |
+| Read comma-separated file | Use `while`, `IFS`, `read`, and input redirection. | See code block below. | Good for import scripts. |
 | Skip header row | `if [[ "$COL" != "header" ]]` | `if [[ "$MAJOR" != "major" ]]` | Prevents inserting column names. |
 | Read four columns | `read -r A B C D` | `read -r FIRST LAST MAJOR GPA` | One variable per CSV column. |
 
 Readable pattern:
 
 ```bash
-cat courses.csv | while IFS="," read -r MAJOR COURSE
+while IFS="," read -r MAJOR COURSE
 do
   if [[ "$MAJOR" != "major" ]]
   then
     echo "$MAJOR -> $COURSE"
   fi
-done
+done < courses.csv
+```
+
+The same pattern works for more columns:
+
+```bash
+while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
+do
+  if [[ "$YEAR" != "year" ]]
+  then
+    echo "$YEAR: $WINNER vs $OPPONENT"
+  fi
+done < games.csv
 ```
 
 ## Running PostgreSQL from Bash
