@@ -110,23 +110,33 @@ CREATE TABLE games (
 
 ## Import Strategy
 
-The import script reads `games.csv` line by line:
+The import script keeps the original two-pass workflow used while completing
+the project. It reads `games.csv` once to build the `teams` table, then reads
+the file again to build the `games` table.
+
+Each row in `games.csv` has this shape:
 
 ```text
 year,round,winner,opponent,winner_goals,opponent_goals
 ```
 
-For each non-header row:
+First pass:
 
 1. Look up the winner in `teams`.
 2. Insert the winner if it is missing.
-3. Look up the winner ID again after insert.
-4. Look up the opponent in `teams`.
-5. Insert the opponent if it is missing.
-6. Look up the opponent ID again after insert.
-7. Insert the game row using `winner_id` and `opponent_id`.
+3. Look up the opponent in `teams`.
+4. Insert the opponent if it is missing.
+
+Second pass:
+
+1. Look up the winner ID in `teams`.
+2. Look up the opponent ID in `teams`.
+3. Insert the game row using `winner_id` and `opponent_id`.
 
 The script must not hard-code team IDs because IDs depend on insert order.
+
+A single-pass import could be more efficient, but the two-pass version is
+straightforward and preserves the actual learning workflow used in this project.
 
 ## Expected Row Counts
 

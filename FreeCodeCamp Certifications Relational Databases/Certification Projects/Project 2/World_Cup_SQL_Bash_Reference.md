@@ -55,6 +55,28 @@ The CSV file is read with `IFS=","` so each comma-separated column is assigned
 to a Bash variable:
 
 ```bash
+cat games.csv | while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
+do
+  if [[ $YEAR != "year" ]]
+  then
+    echo "$YEAR - $WINNER vs $OPPONENT"
+  fi
+done
+```
+
+| Part | Meaning |
+| --- | --- |
+| `cat games.csv` | Sends the CSV file content into the loop. |
+| `IFS=","` | Split each row by comma. |
+| `read -r` | Read a row without treating backslashes as escapes. |
+| `YEAR ROUND ...` | Variables that receive CSV columns. |
+| `[[ $YEAR != "year" ]]` | Skips the header row. |
+
+This keeps the same style used while completing the freeCodeCamp project.
+
+An input-redirection version is also valid and avoids the extra `cat` process:
+
+```bash
 while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
 do
   if [[ $YEAR != "year" ]]
@@ -64,20 +86,11 @@ do
 done < games.csv
 ```
 
-| Part | Meaning |
-| --- | --- |
-| `IFS=","` | Split each row by comma. |
-| `read -r` | Read a row without treating backslashes as escapes. |
-| `YEAR ROUND ...` | Variables that receive CSV columns. |
-| `done < games.csv` | Feeds the file into the loop. |
-| `[[ $YEAR != "year" ]]` | Skips the header row. |
-
-Using input redirection avoids an unnecessary `cat` process and keeps the loop
-easy to read.
-
 ## Lookup-Then-Insert Team Pattern
 
-The import script should insert each team only once.
+The import script should insert each team only once. In the submitted workflow,
+this is done in a first pass over `games.csv`, before inserting game rows in a
+second pass.
 
 ```bash
 WINNER_ID=$($PSQL "SELECT team_id FROM teams WHERE name='$WINNER'")
@@ -96,6 +109,14 @@ Why the ID is queried again:
 - before insert, the ID is empty
 - after insert, PostgreSQL generates the `SERIAL` ID
 - the game row needs that generated ID for its foreign key
+
+The two-pass approach is easy to trace while learning:
+
+1. Build the `teams` table from all winners and opponents.
+2. Read the CSV again and insert `games` rows using the generated team IDs.
+
+A one-pass version can be more efficient, but the two-pass version is kept here
+because it reflects the completed project workflow.
 
 ## Insert Game Pattern
 
@@ -170,6 +191,22 @@ translate `winner_id` into `teams.name`.
 To list teams that played in a round, both `winner_id` and `opponent_id` must be
 considered.
 
+The submitted query uses an `OR` condition in the join:
+
+```sql
+SELECT name
+FROM teams
+JOIN games ON teams.team_id = games.winner_id
+          OR teams.team_id = games.opponent_id
+WHERE year = 2014
+  AND round = 'Eighth-Final'
+ORDER BY name;
+```
+
+This matches the required output for the project.
+
+An alternative version can use `UNION`:
+
 ```sql
 SELECT name
 FROM teams
@@ -181,7 +218,7 @@ WHERE team_id IN (
 ORDER BY name;
 ```
 
-Why `UNION` is useful:
+Why the `UNION` version can be useful:
 
 - it combines winner IDs and opponent IDs into one result set
 - it removes duplicates by default

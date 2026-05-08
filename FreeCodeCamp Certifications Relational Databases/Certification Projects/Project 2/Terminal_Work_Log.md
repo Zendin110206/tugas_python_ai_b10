@@ -87,9 +87,9 @@ The script:
 
 1. truncates `teams` and `games`
 2. resets serial IDs
-3. reads `games.csv`
-4. inserts each unique team
-5. inserts each game with the correct `winner_id` and `opponent_id`
+3. reads `games.csv` once to insert each unique team
+4. reads `games.csv` again to insert each game with the correct `winner_id` and
+   `opponent_id`
 
 Verification:
 

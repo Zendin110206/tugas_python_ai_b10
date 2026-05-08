@@ -437,23 +437,36 @@ MAIN_MENU() {
 
 | Goal | Syntax | Example | Notes |
 | --- | --- | --- | --- |
-| Read comma-separated file | Use `while`, `IFS`, `read`, and input redirection. | See code block below. | Good for import scripts. |
+| Read comma-separated file | Use `cat`, pipe, `while`, `IFS`, and `read` together. | See code block below. | This is the pattern used in the freeCodeCamp CSV import workshops. |
 | Skip header row | `if [[ "$COL" != "header" ]]` | `if [[ "$MAJOR" != "major" ]]` | Prevents inserting column names. |
 | Read four columns | `read -r A B C D` | `read -r FIRST LAST MAJOR GPA` | One variable per CSV column. |
 
-Readable pattern:
+Workshop pattern:
 
 ```bash
-while IFS="," read -r MAJOR COURSE
+cat courses.csv | while IFS="," read -r MAJOR COURSE
 do
   if [[ "$MAJOR" != "major" ]]
   then
     echo "$MAJOR -> $COURSE"
   fi
-done < courses.csv
+done
 ```
 
 The same pattern works for more columns:
+
+```bash
+cat games.csv | while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
+do
+  if [[ "$YEAR" != "year" ]]
+  then
+    echo "$YEAR: $WINNER vs $OPPONENT"
+  fi
+done
+```
+
+Input redirection is a valid alternative when the script does not need the
+extra `cat` command:
 
 ```bash
 while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
