@@ -11,31 +11,42 @@ fi
 
 echo "$($PSQL "TRUNCATE teams, games RESTART IDENTITY")"
 
-while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
+# This project keeps the original two-pass import workflow:
+# first insert unique teams, then insert games with the generated team IDs.
+cat games.csv | while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
 do
-  # Skip the CSV header row.
-  if [[ $YEAR != "year" ]]
+  # Skip column name
+  if [[ "$WINNER" != "winner" ]]
   then
-    WINNER_ID=$($PSQL "SELECT team_id FROM teams WHERE name='$WINNER'")
+    TEAM_ID_WINNER=$($PSQL "SELECT team_id FROM teams WHERE name='$WINNER'")
+    TEAM_ID_OPPONENT=$($PSQL "SELECT team_id FROM teams WHERE name='$OPPONENT'")
 
-    if [[ -z $WINNER_ID ]]
+    if [[ -z $TEAM_ID_WINNER ]]
     then
-      INSERT_WINNER_RESULT=$($PSQL "INSERT INTO teams(name) VALUES('$WINNER')")
+      TEAMS_WINNER=$($PSQL "INSERT INTO teams(name) VALUES('$WINNER')")
       echo "Inserted team: $WINNER"
-
-      WINNER_ID=$($PSQL "SELECT team_id FROM teams WHERE name='$WINNER'")
+    else
+      echo "Team already exist : $WINNER, SKIPPED"
     fi
 
-    OPPONENT_ID=$($PSQL "SELECT team_id FROM teams WHERE name='$OPPONENT'")
-
-    if [[ -z $OPPONENT_ID ]]
+    if [[ -z $TEAM_ID_OPPONENT ]]
     then
-      INSERT_OPPONENT_RESULT=$($PSQL "INSERT INTO teams(name) VALUES('$OPPONENT')")
+      TEAMS_WINNER=$($PSQL "INSERT INTO teams(name) VALUES('$OPPONENT')")
       echo "Inserted team: $OPPONENT"
-
-      OPPONENT_ID=$($PSQL "SELECT team_id FROM teams WHERE name='$OPPONENT'")
+    else
+      echo "Team already exist : $OPPONENT, SKIPPED"
     fi
-
-    INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(year, round, winner_id, opponent_id, winner_goals, opponent_goals) VALUES($YEAR, '$ROUND', $WINNER_ID, $OPPONENT_ID, $WINNER_GOALS, $OPPONENT_GOALS)")
   fi
-done < games.csv
+done
+
+cat games.csv | while IFS="," read -r YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS
+do
+  # Skip column name
+  if [[ "$YEAR" != "year" ]]
+  then
+    TEAM_ID_WINNER=$($PSQL "SELECT team_id FROM teams WHERE name='$WINNER'")
+    TEAM_ID_OPPONENT=$($PSQL "SELECT team_id FROM teams WHERE name='$OPPONENT'")
+
+    INSERT_MATCHES_RESULT=$($PSQL "INSERT INTO games(year, round, winner_id, opponent_id, winner_goals, opponent_goals) VALUES($YEAR, '$ROUND', $TEAM_ID_WINNER, $TEAM_ID_OPPONENT, $WINNER_GOALS, $OPPONENT_GOALS)")
+  fi
+done
