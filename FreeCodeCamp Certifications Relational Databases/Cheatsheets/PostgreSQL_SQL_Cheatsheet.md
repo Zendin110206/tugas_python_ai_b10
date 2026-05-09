@@ -10,6 +10,7 @@ queries, filters, joins, or database dumps.
 
 | Goal | Syntax | Example | Notes |
 | --- | --- | --- | --- |
+| Start PostgreSQL service | `sudo service postgresql start` | `sudo service postgresql start` | Useful in local Dev Container or VM sessions when PostgreSQL is not running yet. |
 | Log in to PostgreSQL | `psql --username=user --dbname=database` | `psql --username=freecodecamp --dbname=postgres` | Enter from Bash terminal. |
 | List databases | `\l` | `\l` | `psql` meta-command. |
 | Connect to database | `\c database_name` | `\c students` | Switch current database. |
@@ -17,7 +18,7 @@ queries, filters, joins, or database dumps.
 | Inspect table | `\d table_name` | `\d students` | Shows columns and keys. |
 | Exit `psql` | `\q` | `\q` | Leaves `psql`. |
 | Run one SQL command from Bash | `psql ... -c "SQL"` | `psql --username=freecodecamp --dbname=students -c "SELECT * FROM majors"` | Useful in scripts. |
-| Export dump | `pg_dump --clean --create --inserts --username=user database > file.sql` | `pg_dump --clean --create --inserts --username=freecodecamp students > students.sql` | Creates rebuild file. |
+| Export dump | `pg_dump --clean --create --inserts --username=user database > file.sql` | `pg_dump -cC --inserts -U freecodecamp salon > salon.sql` | Creates rebuild file. `-cC` is the short form of `--clean --create`. |
 
 ## Database Commands
 
@@ -367,7 +368,7 @@ WHERE (first_name || major) ILIKE '%ri%';
 
 | Goal | Syntax | Example | Notes |
 | --- | --- | --- | --- |
-| Export full database | `pg_dump --clean --create --inserts --username=user database > file.sql` | `pg_dump --clean --create --inserts --username=freecodecamp students > students.sql` | Produces SQL rebuild file. |
+| Export full database | `pg_dump --clean --create --inserts --username=user database > file.sql` | `pg_dump -cC --inserts -U freecodecamp salon > salon.sql` | Produces SQL rebuild file. `-cC` means clean existing objects and include database creation commands. |
 | Restore dump | `psql -U user < file.sql` | `psql -U postgres < students.sql` | User depends on environment. |
 | Redirect output to file | `command > file` | `pg_dump ... > students.sql` | Overwrites file. |
 | Append output to file | `command >> file` | `echo "text" >> notes.txt` | Adds to end. |
