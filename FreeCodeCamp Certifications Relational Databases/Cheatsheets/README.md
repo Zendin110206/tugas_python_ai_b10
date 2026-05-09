@@ -13,6 +13,7 @@ or import pattern.
 | File | Focus | Best used when |
 | --- | --- | --- |
 | `Bash_Cheatsheet.md` | Bash terminal, scripting, streams, text processing, and menu automation syntax. | Writing shell scripts, loops, conditions, input handling, redirection, pipes, `grep`, `sed`, `diff`, CSV parsing, `psql` automation, and interactive terminal menus. |
+| `Nano_Cheatsheet.md` | Nano terminal editor shortcuts and file editing workflow. | Editing files directly in a terminal, saving with `Ctrl+O`, exiting with `Ctrl+X`, cutting and pasting lines, and handling small Bash output edge cases while editing. |
 | `PostgreSQL_SQL_Cheatsheet.md` | PostgreSQL and SQL syntax. | Creating databases, designing tables, querying rows, filtering with `WHERE`, grouping, joining tables, updating state, and exporting dumps. |
 
 ## Scope Policy
