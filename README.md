@@ -198,7 +198,7 @@ This combination makes the repository more representative of my actual learning 
   Covers workshop-based practice from the Git section of the certification track. The section is organized by workshop folder, currently including Nano file editing through Build a Castle and Git history practice through Build an SQL Reference Object.
 
 - **Certification Projects**
-  Stores required project submission artifacts and supporting documentation for freeCodeCamp Relational Databases certification projects, including the Celestial Bodies Database, World Cup Database, and Salon Appointment Scheduler projects.
+  Stores required project submission artifacts and supporting documentation for freeCodeCamp Relational Databases certification projects, including the Celestial Bodies Database, World Cup Database, Salon Appointment Scheduler, and Periodic Table Database projects.
 
 ### HackerRank Practice
 
@@ -253,7 +253,7 @@ This combination makes the repository more representative of my actual learning 
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `FreeCodeCamp Certifications Relational Databases/`
-  Cleaned notes, command summaries, quick syntax cheatsheets, workshop-organized documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, Git workflow practice, Nano terminal editing, SQL+Bash import, query, text-processing automation, interactive database-backed Bash programs, SQL/PostgreSQL practice, and the Celestial Bodies Database, World Cup Database, and Salon Appointment Scheduler projects.
+  Cleaned notes, command summaries, quick syntax cheatsheets, workshop-organized documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, Git workflow practice, Nano terminal editing, SQL+Bash import, query, text-processing automation, interactive database-backed Bash programs, SQL/PostgreSQL practice, and the Celestial Bodies Database, World Cup Database, Salon Appointment Scheduler, and Periodic Table Database projects.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
