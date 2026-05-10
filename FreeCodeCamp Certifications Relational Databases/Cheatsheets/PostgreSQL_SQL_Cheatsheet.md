@@ -49,6 +49,8 @@ queries, filters, joins, or database dumps.
 | Rename column | `ALTER TABLE table RENAME COLUMN old TO new;` | `ALTER TABLE more_info RENAME COLUMN height TO height_in_cm;` | Metadata change. |
 | Drop column | `ALTER TABLE table DROP COLUMN column;` | `ALTER TABLE second_table DROP COLUMN age;` | Destructive. |
 | Set not null | `ALTER TABLE table ALTER COLUMN column SET NOT NULL;` | `ALTER TABLE more_info ALTER COLUMN character_id SET NOT NULL;` | Adds requirement. |
+| Change column type | `ALTER TABLE table ALTER COLUMN column TYPE new_type;` | `ALTER TABLE elements ALTER COLUMN symbol TYPE VARCHAR(2);` | Use when existing values already fit the new type. |
+| Change type with conversion | `ALTER TABLE table ALTER COLUMN column TYPE new_type USING column::new_type;` | `ALTER TABLE properties ALTER COLUMN atomic_mass TYPE DECIMAL USING atomic_mass::DECIMAL;` | Use `USING` when PostgreSQL needs an explicit conversion rule. |
 
 ## Data Types
 
@@ -107,6 +109,24 @@ queries, filters, joins, or database dumps.
 | Delete all rows carefully | `TRUNCATE table;` | `TRUNCATE courses;` | Faster full-table delete. |
 | Truncate related tables | `TRUNCATE table_1, table_2;` | `TRUNCATE students, majors, courses, majors_courses;` | Needed with foreign keys. |
 | Truncate and reset IDs | `TRUNCATE table RESTART IDENTITY;` | `TRUNCATE students RESTART IDENTITY;` | Resets serial sequence. |
+
+## Type Casting and Data Cleaning
+
+| Goal | Syntax | Example | Notes |
+| --- | --- | --- | --- |
+| Cast value to another type | `value::type` | `atomic_mass::TEXT` | PostgreSQL shorthand for type conversion. |
+| Trim trailing characters | `TRIM(TRAILING 'char' FROM value)` | `TRIM(TRAILING '0' FROM atomic_mass::TEXT)` | Removes only matching characters at the end. |
+| Clean decimal text and store numeric | `UPDATE table SET column = TRIM(TRAILING '0' FROM column::TEXT)::DECIMAL;` | `UPDATE properties SET atomic_mass = TRIM(TRAILING '0' FROM atomic_mass::TEXT)::DECIMAL;` | Useful when tests expect numeric values without unnecessary trailing zeroes. |
+
+Periodic Table example:
+
+```sql
+UPDATE properties
+SET atomic_mass = TRIM(TRAILING '0' FROM atomic_mass::TEXT)::DECIMAL;
+```
+
+The value is temporarily converted to text so `TRIM` can remove ending zeroes,
+then converted back to a decimal value before being stored.
 
 ## Bike Rental Shop State Queries
 
