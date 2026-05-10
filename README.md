@@ -180,7 +180,7 @@ This combination makes the repository more representative of my actual learning 
 ### freeCodeCamp Relational Databases Practice
 
 - **Cheatsheets**
-  Stores quick lookup tables for Bash, Nano, PostgreSQL, SQL, standard streams, redirection, and text-processing syntax learned across the Relational Databases track. These files are designed for fast syntax recall, while the workshop folders keep the longer learning notes.
+  Stores quick lookup tables for Bash, Git, Nano, PostgreSQL, SQL, standard streams, redirection, and text-processing syntax learned across the Relational Databases track. These files are designed for fast syntax recall, while the workshop folders keep the longer learning notes.
 
 - **Bash Fundamentals**
   Covers command-line navigation, file inspection, file and directory creation, command flags, destructive-command safety, and the cleaned Build a Boilerplate workshop flow.
@@ -195,7 +195,7 @@ This combination makes the repository more representative of my actual learning 
   Covers PostgreSQL and relational database fundamentals through review notes and cleaned workshop documentation, including database creation, table design, constraints, keys, relationship modeling, junction tables, and join queries.
 
 - **Git**
-  Covers workshop-based practice from the Git section of the certification track. The section is organized by workshop folder, with the current documented material focused on Nano file editing through the Build a Castle workshop.
+  Covers workshop-based practice from the Git section of the certification track. The section is organized by workshop folder, currently including Nano file editing through Build a Castle and Git history practice through Build an SQL Reference Object.
 
 - **Certification Projects**
   Stores required project submission artifacts and supporting documentation for freeCodeCamp Relational Databases certification projects, including the Celestial Bodies Database, World Cup Database, and Salon Appointment Scheduler projects.
@@ -253,7 +253,7 @@ This combination makes the repository more representative of my actual learning 
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `FreeCodeCamp Certifications Relational Databases/`
-  Cleaned notes, command summaries, quick syntax cheatsheets, workshop-organized documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, Nano terminal editing, SQL+Bash import, query, text-processing automation, interactive database-backed Bash programs, SQL/PostgreSQL practice, and the Celestial Bodies Database, World Cup Database, and Salon Appointment Scheduler projects.
+  Cleaned notes, command summaries, quick syntax cheatsheets, workshop-organized documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, Git workflow practice, Nano terminal editing, SQL+Bash import, query, text-processing automation, interactive database-backed Bash programs, SQL/PostgreSQL practice, and the Celestial Bodies Database, World Cup Database, and Salon Appointment Scheduler projects.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
