@@ -179,6 +179,9 @@ This combination makes the repository more representative of my actual learning 
 
 ### freeCodeCamp Relational Databases Practice
 
+- **Relational Databases Review**
+  Provides consolidated review material for the Relational Databases certification track, kept as a standalone closing review file for the full track.
+
 - **Cheatsheets**
   Stores quick lookup tables for Bash, Git, Nano, PostgreSQL, SQL, standard streams, redirection, and text-processing syntax learned across the Relational Databases track. These files are designed for fast syntax recall, while the workshop folders keep the longer learning notes.
 
@@ -253,7 +256,7 @@ This combination makes the repository more representative of my actual learning 
   Topic-based review notes, a consolidated `Python_Review.md`, coding exercises, algorithm implementations, and certification-style projects completed as supplementary structured study.
 
 - `FreeCodeCamp Certifications Relational Databases/`
-  Cleaned notes, command summaries, quick syntax cheatsheets, workshop-organized documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, Git workflow practice, Nano terminal editing, SQL+Bash import, query, text-processing automation, interactive database-backed Bash programs, SQL/PostgreSQL practice, and the Celestial Bodies Database, World Cup Database, Salon Appointment Scheduler, Periodic Table Database, and Number Guessing Game projects.
+  Cleaned notes, a standalone `Relational_Databases_Review.md`, command summaries, quick syntax cheatsheets, workshop-organized documentation, and certification project artifacts for the freeCodeCamp Relational Databases Certification track, including Bash Fundamentals, Bash Scripting, Git workflow practice, Nano terminal editing, SQL+Bash import, query, text-processing automation, interactive database-backed Bash programs, SQL/PostgreSQL practice, and the Celestial Bodies Database, World Cup Database, Salon Appointment Scheduler, Periodic Table Database, and Number Guessing Game projects.
 
 - `HackerRank/`
   Short problem-solving exercises that support Python fundamentals and programming fluency.
