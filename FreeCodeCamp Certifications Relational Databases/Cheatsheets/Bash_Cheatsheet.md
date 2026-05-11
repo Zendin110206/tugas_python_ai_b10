@@ -155,6 +155,7 @@ Use `[[ ... ]]` for true-or-false checks.
 | Equal string | `[[ "$A" == "$B" ]]` | `[[ "$NAME" == "Mario" ]]` | Text comparison. |
 | Not equal string | `[[ "$A" != "$B" ]]` | `[[ "$MAJOR" != "major" ]]` | Useful for skipping CSV headers. |
 | Regex match | `[[ "$A" =~ pattern ]]` | `[[ "$QUESTION" =~ \?$ ]]` | Pattern should usually not be quoted. |
+| Integer text only | `[[ "$A" =~ ^[0-9]+$ ]]` | `[[ "$GUESS" =~ ^[0-9]+$ ]]` | Useful before arithmetic comparisons. |
 | Empty variable | `[[ -z "$A" ]]` | `[[ -z "$MAJOR_ID" ]]` | True if variable is empty. |
 | Not empty variable | `[[ -n "$A" ]]` | `[[ -n "$COURSE_ID" ]]` | True if variable has content. |
 | Variable is missing | `[[ ! $1 ]]` | `[[ ! $1 ]]` | Used to check no function argument. |
@@ -341,6 +342,7 @@ cat $1 | sed -E 's/catnip/dogchow/g; s/cat/dog/g; s/meow|meowzer/woof/g'
 | --- | --- | --- |
 | Count with known range | `for (( init; condition; update ))` | Countdown timer. |
 | Repeat while true | `while [[ condition ]]` | Count down while `I >= 0`. |
+| Repeat arithmetic check | `while (( expression ))` | Guess until `GUESS == SECRET_NUMBER`. |
 | Repeat until true | `until [[ condition ]]` | Ask until input ends with `?`. |
 | Read file line by line | Use `cat`, pipe, `while`, and `read` together. | CSV import script. |
 

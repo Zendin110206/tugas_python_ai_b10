@@ -66,6 +66,13 @@ queries, filters, joins, or database dumps.
 | `BOOLEAN` | True or false. | `has_life BOOLEAN` | Yes/no facts. |
 | `DATE` | Date value. | `'1990-04-13'` | Dates. |
 
+## Default Values
+
+| Goal | Syntax | Example | Notes |
+| --- | --- | --- | --- |
+| Integer starts at zero | `column INT DEFAULT 0` | `games_played INT DEFAULT 0` | Useful for counters and score summaries. |
+| Required text with max length | `column VARCHAR(n) NOT NULL` | `username VARCHAR(22) NOT NULL` | Used when project tests require a specific maximum length. |
+
 ## Boolean and Date Patterns
 
 | Goal | Syntax | Example | Notes |
