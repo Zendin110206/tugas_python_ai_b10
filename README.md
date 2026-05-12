@@ -217,12 +217,10 @@ This combination makes the repository more representative of my actual learning 
   - Scope: approximately 300 hours of Python-focused practice and project work
   - Credential: [freecodecamp.org/certification/zaenal_abidin/python-v9](https://freecodecamp.org/certification/zaenal_abidin/python-v9)
 
-### Next Learning Track
-
-- **freeCodeCamp Relational Databases Certification**
-  - Status: in progress
-  - Current focus: Bash scripting, SQL+Bash automation, advanced Bash text processing, PostgreSQL querying, relational database modeling, and certification project work
-  - Repository policy: related files will be added only after project work or review materials are completed, so the repository remains evidence-based and easy to audit.
+- **freeCodeCamp Relational Database Developer Certification**
+  - Completed: May 11, 2026
+  - Scope: Bash, Git, PostgreSQL, SQL, relational database design, SQL+Bash automation, and required database-backed certification projects
+  - Credential: [freecodecamp.org/certification/zaenal_abidin/relational-databases-v9](https://freecodecamp.org/certification/zaenal_abidin/relational-databases-v9)
 
 ---
 
